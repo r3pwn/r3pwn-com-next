@@ -9,10 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@payloadcms/next-payload": "^0.0.22",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
     "next": "13.3.4",
+    "payload": "^1.7.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.2",
+    "typescript": "5.0.4"
   }
 }
