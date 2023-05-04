@@ -1,12 +1,33 @@
+import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
+import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs';
 import path from 'path';
 import { buildConfig } from 'payload/config';
 
+import Media from './collections/Media';
+import AboutMe from './globals/AboutMe';
+
+const googleCloudStorageAdapter = gcsAdapter({
+  options: {
+    credentials: JSON.parse(process.env.GCS_CREDENTIALS as string)
+  },
+  bucket: process.env.GCS_BUCKET as string
+});
+
 export default buildConfig({
+  plugins: [
+    cloudStorage({
+      collections: {
+        'media': {
+          adapter: googleCloudStorageAdapter
+        },
+      },
+    }),
+  ],
   collections: [
-    // Your collections here
+    Media
   ],
   globals: [
-    // Your globals here
+    AboutMe
   ],
   typescript: {
     outputFile: path.resolve(__dirname, '../payload-types.ts'),
