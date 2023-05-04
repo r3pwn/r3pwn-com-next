@@ -8,10 +8,10 @@ import AboutMe from './globals/AboutMe';
 
 const googleCloudStorageAdapter = gcsAdapter({
   options: {
-    credentials: JSON.parse(process.env.GCS_CREDENTIALS as string)
+    credentials: JSON.parse(process.env.GCS_CREDENTIALS as string || '{}')
   },
-  bucket: process.env.GCS_BUCKET as string
-});
+  bucket: process.env.GCS_BUCKET as string,
+})
 
 export default buildConfig({
   plugins: [
@@ -19,9 +19,9 @@ export default buildConfig({
       collections: {
         'media': {
           adapter: googleCloudStorageAdapter
-        },
-      },
-    }),
+        }
+      }
+    })
   ],
   collections: [
     Media
@@ -32,4 +32,9 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, '../payload-types.ts'),
   },
+  upload: {
+    limits: {
+      fileSize: 10000000, // 5MB, written in bytes
+    }
+  }
 });
