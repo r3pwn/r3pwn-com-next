@@ -1,3 +1,6 @@
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import { Variant } from '@mui/material/styles/createTypography';
 import escapeHTML from 'escape-html';
 import { Fragment } from 'react';
 import { Text } from 'slate';
@@ -5,7 +8,7 @@ import { RichTextNode } from './types';
 
 export const serializeRichText = (children: RichTextNode[]) => children.map((node, i) => {
   if (Text.isText(node)) {
-    let text = <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} />;
+    let text = escapeHTML(node.text);
 
     if (node.bold) {
       text = (
@@ -46,17 +49,15 @@ export const serializeRichText = (children: RichTextNode[]) => children.map((nod
 
   switch (node.type) {
     case 'h1':
-      return (
-        <h1 key={i}>
-          {serializeRichText(node.children)}
-        </h1>
-      );
-    // Iterate through all headings here...
+    case 'h2':
+    case 'h3':
+    case 'h4':
+    case 'h5':
     case 'h6':
       return (
-        <h6 key={i}>
+        <Typography key={i} variant={node.type as Variant}>
           {serializeRichText(node.children)}
-        </h6>
+        </Typography>
       );
     case 'blockquote':
       return (
@@ -79,24 +80,22 @@ export const serializeRichText = (children: RichTextNode[]) => children.map((nod
     case 'li':
       return (
         <li key={i}>
-          {serializeRichText(node.children)}
+          <Typography key={i} variant='body1' component='span'>
+            {serializeRichText(node.children)}
+          </Typography>
         </li>
       );
     case 'link':
       return (
-        <a
-          href={escapeHTML(node.url)}
-          key={i}
-        >
+        <Link href={escapeHTML(node.url)} key={i}>
           {serializeRichText(node.children)}
-        </a>
+        </Link>
       );
-
     default:
       return (
-        <p key={i}>
+        <Typography key={i} variant='body1'>
           {serializeRichText(node.children)}
-        </p>
+        </Typography>
       );
   }
 });
