@@ -10,25 +10,9 @@ const BlogPost: CollectionConfig = {
       required: true
     },
     {
-      name: "slug",
-      type: "text",
-      required: true
-    },
-    {
       name: 'description',
       type: 'text',
       required: true
-    },
-    {
-      name: 'posted-date',
-      type: 'date',
-      required: true,
-      admin: {
-        date: {
-          displayFormat: 'yyyy-MM-dd',
-          pickerAppearance: 'dayOnly'
-        }
-      }
     },
     {
       name: 'featured-image',
@@ -49,8 +33,31 @@ const BlogPost: CollectionConfig = {
       }
     },
     {
+      name: "slug",
+      type: "text",
+      required: true,
+      admin: {
+        position: 'sidebar'
+      }
+    },
+    {
+      name: 'posted-date',
+      type: 'date',
+      required: true,
+      admin: {
+        position: 'sidebar',
+        date: {
+          displayFormat: 'yyyy-MM-dd',
+          pickerAppearance: 'dayOnly'
+        }
+      }
+    },
+    {
       name: 'enable-comments',
-      type: 'checkbox'
+      type: 'checkbox',
+      admin: {
+        position: 'sidebar'
+      }
     }
   ],
   hooks: {
