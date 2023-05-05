@@ -41,6 +41,6 @@ export async function getStaticProps() {
     props: {
       data
     },
-    revalidate: SECONDS_PER_DAY * 7
+    revalidate: SECONDS_PER_DAY * 30
   }
 }
