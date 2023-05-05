@@ -3,6 +3,7 @@ import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs';
 import path from 'path';
 import { buildConfig } from 'payload/config';
 
+import BlogPost from './collections/BlogPost';
 import Media from './collections/Media';
 import AboutMe from './globals/AboutMe';
 
@@ -24,6 +25,7 @@ export default buildConfig({
     })
   ],
   collections: [
+    BlogPost,
     Media
   ],
   globals: [
