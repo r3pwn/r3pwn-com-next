@@ -6,9 +6,13 @@ import { Fragment } from 'react';
 import { Text } from 'slate';
 import { RichTextNode } from './types';
 
+function replaceEscapes(input: string) {
+  return input.replaceAll('\n', '<br>');
+}
+
 export const serializeRichText = (children: RichTextNode[]) => children.map((node, i) => {
   if (Text.isText(node)) {
-    let text = escapeHTML(node.text);
+    let text = (<span dangerouslySetInnerHTML={{__html: replaceEscapes(node.text)}} />);
 
     if (node.bold) {
       text = (

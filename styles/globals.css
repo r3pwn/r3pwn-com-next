@@ -12,6 +12,13 @@ li::marker {
   font-family: var(--font-body);
 }
 
+blockquote {
+  margin-left: 0.75rem;
+  padding-left: 0.625rem;
+  border-left: 0.125rem solid #939393;
+  font-size: 1rem;
+}
+
 :root {
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
