@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import { getPayloadClient } from "../payload/payloadClient";
+import { SECONDS_PER_DAY } from '../utils/constants';
 import { serializeRichText } from "../utils/payload-richtext";
 import { PayloadMedia, RichTextNode } from "../utils/types";
 
@@ -39,6 +40,7 @@ export async function getStaticProps() {
   return {
     props: {
       data
-    }
+    },
+    revalidate: SECONDS_PER_DAY * 7
   }
 }
