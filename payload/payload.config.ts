@@ -36,5 +36,8 @@ export default buildConfig({
     limits: {
       fileSize: 10000000, // 5MB, written in bytes
     }
+  },
+  graphQL: {
+    disable: true
   }
 });
