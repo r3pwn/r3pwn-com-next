@@ -5,6 +5,15 @@ const { withPayload } = require('@payloadcms/next-payload');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects () {
+    return [
+      {
+        source: '/blog/:slug.html',
+        destination: '/blog/:slug',
+        permanent: true
+      }
+    ]
+  }
 };
 
 const payloadConfig = {
