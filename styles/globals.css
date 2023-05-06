@@ -17,6 +17,19 @@ blockquote {
   padding-left: 0.625rem;
   border-left: 0.125rem solid #939393;
   font-size: 1rem;
+  overflow-x: auto;
+}
+
+blockquote > code {
+  white-space: nowrap;
+}
+
+main.blog-post {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: min(3rem, 5%);
+  padding-right: min(3rem, 5%);
 }
 
 :root {

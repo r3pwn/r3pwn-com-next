@@ -28,7 +28,7 @@ export default function BlogPost({ post, metadata }: Props) {
         <link rel="icon" href="/favicon.ico" />
         {generateMetadataTags(metadata)}
       </Head>
-      <main>
+      <main className='blog-post'>
         <Typography variant='h1'>{post.title}</Typography>
         <Typography variant='subtitle1' gutterBottom>Posted on {postedDate}</Typography>
         <div className='blog-content'>
