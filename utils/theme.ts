@@ -8,6 +8,9 @@ type ResponsiveFontSize = {
 
 export const getCurrentTheme = () => {
   const theme = createTheme({
+    palette: {
+      mode: 'dark'
+    },
     typography: {
       fontFamily: "Inter,sans-serif",
       h1: {
