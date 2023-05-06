@@ -3,6 +3,8 @@
   --max-width: 1200px;
   --font-body: "Inter",sans-serif;
   --color-background-primary: #121212;
+  --color-background-secondary: #2c2c2c;
+  --color-divider: #939393;
 }
 
 html,
@@ -34,9 +36,10 @@ li::marker {
 blockquote {
   margin-left: 0.75rem;
   padding-left: 0.625rem;
-  border-left: 0.125rem solid #939393;
+  border-left: 0.125rem solid var(--color-divider);
   font-size: 1rem;
   overflow-x: auto;
+  background-color: var(--color-background-secondary);
 }
 
 blockquote > code {
