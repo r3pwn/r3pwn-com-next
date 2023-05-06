@@ -1,3 +1,10 @@
+export type OpenGraphTags = {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+}
+
 export type RichTextNode = {
   bold: Boolean;
   code: Boolean;
@@ -9,13 +16,22 @@ export type RichTextNode = {
 }
 
 export type PayloadMedia = {
-  id: String;
-  filename: String;
-  mimeType: String;
+  id: string;
+  filename: string;
+  mimeType: string;
   filesize: Number;
   width: Number;
   height: Number;
-  createdAt: String;
-  updatedAt: String;
-  url: String;
+  createdAt: string;
+  updatedAt: string;
+  url: string;
+}
+
+export type BlogPost = {
+  title: string;
+  slug: string;
+  description: string;
+  featuredImage?: PayloadMedia;
+  content: RichTextNode[];
+  postedDate: string;
 }
