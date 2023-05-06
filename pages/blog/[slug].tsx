@@ -11,6 +11,9 @@ type Props = {
 
 export default function BlogPost({ post }: Props) {
   const pageTitle = `${post.title} | r3pwn`;
+  const postedDate = new Date(post.postedDate)
+    .toLocaleDateString('en-us', {month: 'long', day: 'numeric', year: 'numeric' });
+  
   return (
     <>
       <Head>
@@ -21,6 +24,7 @@ export default function BlogPost({ post }: Props) {
       </Head>
       <main>
         <Typography variant='h1'>{post.title}</Typography>
+        <Typography variant='subtitle1' gutterBottom>Posted on {postedDate}</Typography>
         <div className='blog-content'>
           {serializeRichText(post.content)}
         </div>

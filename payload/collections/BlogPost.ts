@@ -15,7 +15,7 @@ const BlogPost: CollectionConfig = {
       required: true
     },
     {
-      name: 'featured-image',
+      name: 'featuredImage',
       type: 'relationship',
       relationTo: 'media'
     },
@@ -41,7 +41,7 @@ const BlogPost: CollectionConfig = {
       }
     },
     {
-      name: 'posted-date',
+      name: 'postedDate',
       type: 'date',
       required: true,
       admin: {
@@ -53,7 +53,7 @@ const BlogPost: CollectionConfig = {
       }
     },
     {
-      name: 'enable-comments',
+      name: 'enableComments',
       type: 'checkbox',
       admin: {
         position: 'sidebar'
