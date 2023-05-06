@@ -2,6 +2,25 @@
 :root {
   --max-width: 1200px;
   --font-body: "Inter",sans-serif;
+  --color-background-primary: #121212;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-background-primary);
+}
+
+main.blog-post {
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: min(3rem, 5%);
+  padding-right: min(3rem, 5%);
 }
 
 ol, ul {
@@ -24,13 +43,6 @@ blockquote > code {
   white-space: nowrap;
 }
 
-main.blog-post {
-  max-width: var(--max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: min(3rem, 5%);
-  padding-right: min(3rem, 5%);
-}
 
 :root {
   --border-radius: 12px;
@@ -110,22 +122,6 @@ main.blog-post {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 a {
