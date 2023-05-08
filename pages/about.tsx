@@ -2,8 +2,9 @@ import Head from 'next/head';
 
 import { getPayloadClient } from "../payload/payloadClient";
 import { SECONDS_PER_DAY } from '../utils/constants';
+import { generateMetadataTags } from '../utils/opengraph-tags';
 import { serializeRichText } from "../utils/payload-richtext";
-import { PayloadMedia, RichTextNode } from "../utils/types";
+import { OpenGraphTags, PayloadMedia, RichTextNode } from "../utils/types";
 
 type AboutMeData = {
   image: PayloadMedia;
@@ -12,16 +13,14 @@ type AboutMeData = {
 
 type Props = {
   data: AboutMeData;
+  metadata: OpenGraphTags;
 }
 
-export default function About({ data }: Props) {
+export default function About({ data, metadata }: Props) {
   return (
     <>
       <Head>
-        <title>About Me | r3pwn</title>
-        <meta name="description" content="Some info about me" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        {generateMetadataTags(metadata)}
       </Head>
       <main>
         {serializeRichText(data.content)}
@@ -37,9 +36,16 @@ export async function getStaticProps() {
     slug: 'about-me'
   });
 
+  const metadata = {
+    title: 'About Me | r3pwn',
+    description: 'Some info about me',
+    url: `${process.env.SITE_HOST}/about`
+  } as OpenGraphTags;
+
   return {
     props: {
-      data
+      data,
+      metadata
     },
     revalidate: SECONDS_PER_DAY * 30
   }

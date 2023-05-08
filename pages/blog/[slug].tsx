@@ -22,10 +22,6 @@ export default function BlogPost({ post, metadata }: Props) {
   return (
     <>
       <Head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={post.description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
         {generateMetadataTags(metadata)}
       </Head>
       <main className='blog-post'>
