@@ -8,8 +8,8 @@ const nextConfig = {
   async redirects () {
     return [
       {
-        source: '/blog/:slug.html',
-        destination: '/blog/:slug',
+        source: '/blog/:year/:month/:day/:slug.html',
+        destination: '/blog/:year-:month-:day-:slug',
         permanent: true
       }
     ]

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import { Typography } from '@mui/material';
+import { notFound } from 'next/navigation';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
@@ -44,6 +45,10 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
   
   const post = data.docs.find(post => post.slug === params.slug) as BlogPost;
 
+  if (!post) {
+    notFound();
+  }
+  
   const metadata = {
     title: `${post.title} | r3pwn`,
     description: post.description,
