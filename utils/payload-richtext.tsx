@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { Variant } from '@mui/material/styles/createTypography';
@@ -96,6 +97,19 @@ export const serializeRichText = (children: RichTextNode[]) => children.map((nod
           {serializeRichText(node.children)}
         </Link>
       );
+    case 'upload':
+      return (
+        <Box
+          component="img"
+          sx={{
+            height: '100%',
+            width: '80%',
+            marginLeft: '10%'
+          }}
+          alt={node.value?.altText}
+          src={node.value?.url}
+        />
+      )
     default:
       return (
         <Typography key={i} variant='body1'>

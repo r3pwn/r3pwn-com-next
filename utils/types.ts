@@ -14,10 +14,12 @@ export type RichTextNode = {
   type: String;
   url?: String;
   children: RichTextNode[];
+  value?: PayloadMedia;
 }
 
 export type PayloadMedia = {
   id: string;
+  altText: string;
   filename: string;
   mimeType: string;
   filesize: Number;
