@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { getPayloadClient } from "../payload/payloadClient";
 import { SECONDS_PER_DAY } from '../utils/constants';
 import { generateMetadataTags } from '../utils/opengraph-tags';
 import { OpenGraphTags } from "../utils/types";
@@ -32,8 +31,6 @@ export default function Home({ metadata }: Props) {
 }
 
 export async function getStaticProps() {
-  const payload = await getPayloadClient();
-
   const metadata = {
     title: 'Home | r3pwn',
     description: 'This page is under construction...',
