@@ -12,7 +12,8 @@ function replaceEscapes(input: string) {
 
 export const serializeRichText = (children: RichTextNode[]) => children.map((node, i) => {
   if (Text.isText(node)) {
-    let text = (<span dangerouslySetInnerHTML={{__html: replaceEscapes(node.text)}} />);
+    let classNames = `${node.strikethrough ? 'richtext-strikethrough' : ''}`;
+    let text = (<span className={classNames} dangerouslySetInnerHTML={{__html: replaceEscapes(node.text)}} />);
 
     if (node.bold) {
       text = (

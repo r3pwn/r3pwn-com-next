@@ -6,9 +6,10 @@ export type OpenGraphTags = {
 }
 
 export type RichTextNode = {
-  bold: Boolean;
-  code: Boolean;
-  italic: Boolean;
+  bold?: Boolean;
+  code?: Boolean;
+  italic?: Boolean;
+  strikethrough?: Boolean;
   text: String;
   type: String;
   url?: String;

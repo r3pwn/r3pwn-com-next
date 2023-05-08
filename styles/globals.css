@@ -55,7 +55,7 @@ blockquote {
 }
 
 blockquote > code {
-  white-space: nowrap;
+  white-space: pre;
 }
 
 p > code {
@@ -64,4 +64,12 @@ p > code {
   padding-right: 0.25rem;
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
+}
+
+.richtext-strikethrough {
+  text-decoration: line-through;
+}
+
+.blog-content h2 {
+  margin-top: 0.75rem;
 }
