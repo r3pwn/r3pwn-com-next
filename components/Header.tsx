@@ -11,14 +11,18 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import LogoIcon from './LogoIcon';
 
+type Props = {
+  minimal?: boolean;
+}
+
 const pages = [
   { name: 'Blog posts', path: '/blog' },
   { name: 'Projects', path: '/blog' },
   { name: 'Hackathons', path: '/blog' },
   { name: 'About me', path: '/about' }
-]
+];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ minimal }: Props) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -30,7 +34,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="static">
       <Container maxWidth="lg">
         <Toolbar disableGutters>
           <IconButton 
@@ -40,7 +44,7 @@ function ResponsiveAppBar() {
             <LogoIcon fontSize="large" />
           </IconButton>
 
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          {!minimal && <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -75,7 +79,7 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box>}
 
           <IconButton 
             aria-label="Home page"
@@ -84,18 +88,18 @@ function ResponsiveAppBar() {
             <LogoIcon fontSize="large" />
           </IconButton>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: '0.5rem' }}>
+          {!minimal && <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: '0.5rem' }}>
             {pages.map((page) => (
               <Button
                 key={page.name}
                 href={page.path}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ color: 'white', display: 'block' }}
               >
                 {page.name}
               </Button>
             ))}
-          </Box>
+          </Box>}
         </Toolbar>
       </Container>
     </AppBar>
