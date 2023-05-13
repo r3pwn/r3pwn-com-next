@@ -44,10 +44,10 @@ function ResponsiveAppBar({ minimal }: Props) {
             <LogoIcon fontSize="large" />
           </IconButton>
 
-          {!minimal && <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          {!minimal && <Box sx={{ display: { xs: 'flex', md: 'none' }, zIndex: '1' }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="site navigation link menu"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -81,12 +81,14 @@ function ResponsiveAppBar({ minimal }: Props) {
             </Menu>
           </Box>}
 
-          <IconButton 
-            aria-label="Home page"
-            href="/"
-            sx={{ display: { xs: 'flex', md: 'none' }, mr: 'auto', ml: 'auto' }}>
-            <LogoIcon fontSize="large" />
-          </IconButton>
+          <Box sx={{ position: 'absolute', width: '100%'}}>
+            <IconButton 
+              aria-label="Home page"
+              href="/"
+              sx={{ display: { xs: 'flex', md: 'none' }, mr: 'auto', ml: 'auto', width: 'min-content' }}>
+              <LogoIcon fontSize="large" />
+            </IconButton>
+          </Box>
 
           {!minimal && <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: '0.5rem' }}>
             {pages.map((page) => (
