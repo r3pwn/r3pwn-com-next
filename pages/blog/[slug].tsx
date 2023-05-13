@@ -1,7 +1,8 @@
 import Head from 'next/head';
 
-import { Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import { notFound } from 'next/navigation';
+import Header from '../../components/Header';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
@@ -25,12 +26,15 @@ export default function BlogPost({ post, metadata }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
+      <Header />
       <main className='blog-post'>
-        <Typography variant='h1'>{post.title}</Typography>
-        <Typography variant='subtitle1' gutterBottom>Posted on {postedDate}</Typography>
-        <div className='blog-content'>
-          {serializeRichText(post.content)}
-        </div>
+        <Container maxWidth="lg">
+          <Typography variant='h1' sx={{ mt: '1rem' }}>{post.title}</Typography>
+          <Typography variant='subtitle1' gutterBottom>Posted on {postedDate}</Typography>
+          <div className='blog-content'>
+            {serializeRichText(post.content)}
+          </div>
+        </Container>
       </main>
     </>
   )

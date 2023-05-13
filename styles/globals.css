@@ -1,6 +1,5 @@
 /* styles to keep */
 :root {
-  --max-width: 1200px;
   --font-body: "Inter",sans-serif;
   --color-background-primary: #121212;
   --color-background-secondary: #2c2c2c;
@@ -21,14 +20,6 @@ html, body {
 
 body {
   background-color: var(--color-background-primary);
-}
-
-main.blog-post {
-  max-width: var(--max-width);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: min(3rem, 5%);
-  padding-right: min(3rem, 5%);
 }
 
 a {

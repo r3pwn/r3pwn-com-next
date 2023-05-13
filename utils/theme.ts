@@ -14,27 +14,27 @@ export const getCurrentTheme = () => {
     typography: {
       fontFamily: "Inter,sans-serif",
       h1: {
-        fontSize: '4rem',
-        fontWeight: 500,
-      },
-      h2: {
         fontSize: '3rem',
         fontWeight: 500,
       },
-      h3: {
-        fontSize: '2.25rem',
+      h2: {
+        fontSize: '2rem',
         fontWeight: 500,
       },
-      h4: {
+      h3: {
         fontSize: '1.75rem',
         fontWeight: 500,
       },
-      h5: {
+      h4: {
         fontSize: '1.5rem',
         fontWeight: 500,
       },
-      h6: {
+      h5: {
         fontSize: '1.25rem',
+        fontWeight: 500,
+      },
+      h6: {
+        fontSize: '1rem',
         fontWeight: 500,
       }
     },
@@ -42,27 +42,27 @@ export const getCurrentTheme = () => {
   
   theme.typography.h1 = {
     ...theme.typography.h1,
-    ...generateResponsiveSize(theme, { lg: '3.25rem', md: '2.75rem', sm: '2rem' })
+    ...generateResponsiveSize(theme, { lg: '3rem', md: '2.75rem', sm: '2rem' })
   };
 
   theme.typography.h2 = {
     ...theme.typography.h2,
-    ...generateResponsiveSize(theme, { lg: '3rem', md: '2.25rem', sm: '1.75rem' })
+    ...generateResponsiveSize(theme, { lg: '2rem', md: '1.75rem', sm: '1.75rem' })
   };
 
   theme.typography.h3 = {
     ...theme.typography.h3,
-    ...generateResponsiveSize(theme, { md: '2rem', sm: '1.5rem' })
+    ...generateResponsiveSize(theme, { md: '1.75rem', sm: '1.5rem' })
   };
 
   theme.typography.h4 = {
     ...theme.typography.h4,
-    ...generateResponsiveSize(theme, { sm: '1.5rem' })
+    ...generateResponsiveSize(theme, { sm: '1.25rem' })
   };
 
   theme.typography.h5 = {
     ...theme.typography.h5,
-    ...generateResponsiveSize(theme, { sm: '1.25rem' })
+    ...generateResponsiveSize(theme, { sm: '1rem' })
   };
 
   return theme;

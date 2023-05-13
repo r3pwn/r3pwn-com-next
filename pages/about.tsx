@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { Container, Typography } from '@mui/material';
+import Header from '../components/Header';
 import { getPayloadClient } from "../payload/payloadClient";
 import { SECONDS_PER_DAY } from '../utils/constants';
 import { generateMetadataTags } from '../utils/opengraph-tags';
@@ -22,8 +24,12 @@ export default function About({ data, metadata }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
+      <Header />
       <main>
-        {serializeRichText(data.content)}
+        <Container maxWidth="lg">
+          <Typography variant="h1" sx={{ mt: '1rem' }}>About me</Typography>
+          {serializeRichText(data.content)}
+        </Container>
       </main>
     </>
   )
