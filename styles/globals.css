@@ -48,7 +48,7 @@ blockquote > code {
   white-space: pre;
 }
 
-p > code {
+p > code, span > code {
   background-color: var(--color-background-secondary);
   padding-left: 0.25rem;
   padding-right: 0.25rem;
