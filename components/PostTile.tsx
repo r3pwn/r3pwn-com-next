@@ -17,7 +17,7 @@ type Props = {
   sx?: SxProps<Theme>;
 }
 
-export default function BlogCard({ title, description, image, url, sx }: Props) {
+export default function PostTile({ title, description, image, url, sx }: Props) {
   return (
     <Card sx={{ ...sx, maxWidth: 345, borderRadius: '0.5rem' }}>
       <CardActionArea component='a' href={url} sx={{ display: 'flex', flexDirection: 'column', height: '100%'}}>
