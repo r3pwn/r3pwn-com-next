@@ -33,6 +33,7 @@ export default function Blog({ posts, metadata }: Props) {
                 description={post.description}
                 url={`/blog/${post.slug}`}
                 image={post.featuredImage}
+                sx={{ ml: { xs: 'auto', md: '0'}, mr: { xs: 'auto', md: '0'} }}
               />
             ))}
           </Box>

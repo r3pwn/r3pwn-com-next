@@ -1,4 +1,5 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { SxProps, Theme } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
@@ -13,11 +14,12 @@ type Props = {
   description: string;
   image?: PayloadMedia;
   url: string;
+  sx?: SxProps<Theme>;
 }
 
-export default function BlogCard({ title, description, image, url }: Props) {
+export default function BlogCard({ title, description, image, url, sx }: Props) {
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: '0.5rem' }}>
+    <Card sx={{ ...sx, maxWidth: 345, borderRadius: '0.5rem' }}>
       <CardActionArea component='a' href={url} sx={{ display: 'flex', flexDirection: 'column', height: '100%'}}>
         {image && <CardMedia
           component="img"
