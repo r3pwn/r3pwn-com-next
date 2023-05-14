@@ -18,7 +18,7 @@ export default function Home({ metadata }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <Header minimal={true} />
+      <Header minimal />
       <main style={{ color: 'coral', height: '50vh', paddingTop: '5rem' }}>
         <div className='icons' style={{ textAlign: 'center' }}>
           <ConstructionIcon sx={{ height: '5rem', width: '5rem' }} />

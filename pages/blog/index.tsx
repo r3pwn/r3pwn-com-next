@@ -2,8 +2,8 @@ import Head from 'next/head';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
+import BlogCard from '../../components/BlogCard';
 import Header from '../../components/Header';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
@@ -24,10 +24,16 @@ export default function Blog({ posts, metadata }: Props) {
       <Header />
       <main>
         <Container maxWidth="lg">
-          <Typography variant='h1' sx={{ mt: '1rem' }}>Blog posts</Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Blog posts</Typography>
+          <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             {posts.map(post => (
-              <Link key={post.slug} href={`/blog/${post.slug}`}>{post.title}</Link>
+              <BlogCard 
+                key={post.slug}
+                title={post.title}
+                description={post.description}
+                url={`/blog/${post.slug}`}
+                image={post.featuredImage}
+              />
             ))}
           </Box>
         </Container>

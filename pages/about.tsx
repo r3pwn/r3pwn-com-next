@@ -27,7 +27,7 @@ export default function About({ data, metadata }: Props) {
       <Header />
       <main>
         <Container maxWidth="lg">
-          <Typography variant="h1" sx={{ mt: '1rem' }}>About me</Typography>
+          <Typography variant="h1" gutterBottom sx={{ mt: '1rem' }}>About me</Typography>
           {serializeRichText(data.content)}
         </Container>
       </main>
