@@ -22,7 +22,7 @@ const pages = [
   { name: 'About me', path: '/about' }
 ];
 
-function ResponsiveAppBar({ minimal }: Props) {
+function AppHeader({ minimal }: Props) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -107,4 +107,4 @@ function ResponsiveAppBar({ minimal }: Props) {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default AppHeader;

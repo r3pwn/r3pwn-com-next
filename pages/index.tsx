@@ -6,7 +6,7 @@ import { OpenGraphTags } from "../utils/types";
 import ConstructionIcon from '@mui/icons-material/Construction';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import { Typography } from '@mui/material';
-import Header from '../components/Header';
+import AppHeader from '../components/AppHeader';
 
 type Props = {
   metadata: OpenGraphTags;
@@ -18,7 +18,7 @@ export default function Home({ metadata }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <Header minimal />
+      <AppHeader minimal />
       <main style={{ color: 'coral', height: '50vh', paddingTop: '5rem' }}>
         <div className='icons' style={{ textAlign: 'center' }}>
           <ConstructionIcon sx={{ height: '5rem', width: '5rem' }} />

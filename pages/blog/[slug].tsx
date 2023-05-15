@@ -2,12 +2,13 @@ import Head from 'next/head';
 
 import { Container, Typography } from '@mui/material';
 import { notFound } from 'next/navigation';
-import Header from '../../components/Header';
+import AppFooter from '../../components/AppFooter';
+import AppHeader from '../../components/AppHeader';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
 import { serializeRichText } from '../../utils/payload-richtext';
-import { BlogPost, OpenGraphTags } from '../../utils/types';
+import { BlogPost, FooterData, OpenGraphTags } from '../../utils/types';
 
 type RouteParams = {
   slug: string;
@@ -15,9 +16,10 @@ type RouteParams = {
 type Props = {
   post: BlogPost;
   metadata: OpenGraphTags;
+  footer: FooterData;
 }
 
-export default function BlogPost({ post, metadata }: Props) {
+export default function BlogPost({ post, metadata, footer }: Props) {
   const postedDate = new Date(post.postedDate)
     .toLocaleDateString('en-us', {month: 'long', day: 'numeric', year: 'numeric' });
   
@@ -26,9 +28,9 @@ export default function BlogPost({ post, metadata }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <Header />
+      <AppHeader />
       <main className='blog-post'>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ mb: '1rem' }}>
           <Typography variant='h1' sx={{ mt: '1rem' }}>{post.title}</Typography>
           <Typography variant='subtitle1' gutterBottom>Posted on {postedDate}</Typography>
           <div className='blog-content'>
@@ -36,6 +38,7 @@ export default function BlogPost({ post, metadata }: Props) {
           </div>
         </Container>
       </main>
+      <AppFooter icons={footer.socialLinks} text={footer.copyrightText}/>
     </>
   )
 }
@@ -52,6 +55,10 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
   if (!post) {
     notFound();
   }
+
+  const footer = await payload.findGlobal({
+    slug: 'footer'
+  });
   
   const metadata = {
     title: `${post.title} | r3pwn`,
@@ -66,7 +73,8 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
   return {
     props: {
       post,
-      metadata
+      metadata,
+      footer
     },
     revalidate: SECONDS_PER_DAY * 30
   }

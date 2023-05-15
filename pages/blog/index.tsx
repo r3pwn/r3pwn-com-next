@@ -3,25 +3,27 @@ import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Header from '../../components/Header';
+import AppFooter from '../../components/AppFooter';
+import AppHeader from '../../components/AppHeader';
 import PostTile from '../../components/PostTile';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
-import { BlogPost, OpenGraphTags } from '../../utils/types';
+import { BlogPost, FooterData, OpenGraphTags } from '../../utils/types';
 
 type Props = {
   posts: BlogPost[];
   metadata: OpenGraphTags;
+  footer: FooterData;
 }
 
-export default function Blog({ posts, metadata }: Props) {
+export default function Blog({ posts, metadata, footer }: Props) {
   return (
     <>
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <Header />
+      <AppHeader />
       <main>
         <Container maxWidth="lg">
           <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Blog posts</Typography>
@@ -39,6 +41,7 @@ export default function Blog({ posts, metadata }: Props) {
           </Box>
         </Container>
       </main>
+      <AppFooter icons={footer.socialLinks} text={footer.copyrightText}/>
     </>
   )
 }
@@ -50,6 +53,10 @@ export async function getStaticProps() {
     collection: 'blog-post'
   });
 
+  const footer = await payload.findGlobal({
+    slug: 'footer'
+  });
+
   const metadata = {
     title: 'Blog Posts | r3pwn',
     description: 'A collection of blog posts',
@@ -59,7 +66,8 @@ export async function getStaticProps() {
   return {
     props: {
       posts: result.docs,
-      metadata
+      metadata,
+      footer
     },
     revalidate: SECONDS_PER_DAY * 30
   }
