@@ -1,3 +1,4 @@
+import BrokenImageIcon from '@mui/icons-material/BrokenImage';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import TelegramIcon from '@mui/icons-material/Telegram';
@@ -17,5 +18,9 @@ export const getSupportedIcons = function () {
 }
 
 export const getIcon = function (iconName: string): OverridableComponent<SvgIconTypeMap<{}, "svg">> {
+  if (!iconList[iconName]) {
+    // if the icon requested is not supported, use the broken image icon instead
+    return BrokenImageIcon;
+  }
   return iconList[iconName];
 }
