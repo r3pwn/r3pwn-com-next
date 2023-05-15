@@ -5,7 +5,6 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { PayloadMedia } from '../utils/types';
 
@@ -35,10 +34,8 @@ export default function PostTile({ title, description, image, url, sx }: Props) 
             {description}
           </Typography>
         </CardContent>
-        <CardActions sx={{ mt: 'auto', ml: 'auto' }}>
-          <IconButton>
-            <ArrowForwardIcon />
-          </IconButton>
+        <CardActions sx={{ mt: 'auto', ml: 'auto', mb: '0.5rem', mr: '0.5rem' }}>
+          <ArrowForwardIcon />
         </CardActions>
       </CardActionArea>
     </Card>

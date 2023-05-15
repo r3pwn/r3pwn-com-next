@@ -18,7 +18,7 @@ function AppFooter({ icons, text }: Props) {
       <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: '0.5rem' }}>
         <Box sx={{ mb: '0.25rem' }}>
           {icons.map(icon => (
-            <IconButton key={icon.icon} component='a' href={icon.url} target={icon.openInNewTab ? '_blank' : undefined}>
+            <IconButton key={icon.icon} component='a' aria-label={icon.ariaLabel} href={icon.url} target={icon.openInNewTab ? '_blank' : undefined}>
               <SvgIcon component={getIcon(icon.icon)} inheritViewBox />
             </IconButton>
           ))}
