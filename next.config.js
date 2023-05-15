@@ -4,16 +4,7 @@ const { withPayload } = require('@payloadcms/next-payload');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  async redirects () {
-    return [
-      {
-        source: '/blog/:year/:month/:day/:slug.html',
-        destination: '/blog/:year-:month-:day-:slug',
-        permanent: true
-      }
-    ]
-  }
+  reactStrictMode: true
 };
 
 const payloadConfig = {
