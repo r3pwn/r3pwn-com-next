@@ -38,3 +38,15 @@ export type BlogPost = {
   content: RichTextNode[];
   postedDate: string;
 }
+
+export type FooterData = {
+  copyrightText: string;
+  socialLinks: SocialLink[];
+}
+
+export type SocialLink = {
+  ariaLabel: string;
+  url: string;
+  icon: string;
+  openInNewTab?: boolean;
+}

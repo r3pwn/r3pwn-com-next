@@ -1,0 +1,21 @@
+import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import { SvgIconTypeMap } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+
+const iconList = {
+  email: EmailIcon,
+  github: GitHubIcon,
+  telegram: TelegramIcon,
+  twitter: TwitterIcon
+}
+
+export const getSupportedIcons = function () {
+  return Object.keys(iconList);
+}
+
+export const getIcon = function (iconName: string): OverridableComponent<SvgIconTypeMap<{}, "svg">> {
+  return iconList[iconName];
+}
