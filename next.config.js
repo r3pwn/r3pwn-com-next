@@ -16,6 +16,16 @@ const nextConfig = {
         source: '/blog/:year/:month/:day/:slug',
         destination: '/blog/:year-:month-:day-:slug',
         permanent: true
+      },
+      {
+        source: '/hackathons/:year/:month/:day/:slug.html',
+        destination: '/hackathons/:year-:month-:day-:slug',
+        permanent: true
+      },
+      {
+        source: '/hackathons/:year/:month/:day/:slug',
+        destination: '/hackathons/:year-:month-:day-:slug',
+        permanent: true
       }
     ]
   }

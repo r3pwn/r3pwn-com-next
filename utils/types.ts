@@ -39,6 +39,16 @@ export type BlogPost = {
   postedDate: string;
 }
 
+export type HackathonProject = {
+  title: string;
+  slug: string;
+  event: string;
+  description: string;
+  featuredImage?: PayloadMedia;
+  content: RichTextNode[];
+  postedDate: string;
+}
+
 export type FooterData = {
   copyrightText: string;
   socialLinks: SocialLink[];

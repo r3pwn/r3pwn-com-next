@@ -4,6 +4,7 @@ import path from 'path';
 import { buildConfig } from 'payload/config';
 
 import BlogPost from './collections/BlogPost';
+import Hackathon from './collections/Hackathon';
 import Media from './collections/Media';
 import AboutMe from './globals/AboutMe';
 import Footer from './globals/Footer';
@@ -27,6 +28,7 @@ export default buildConfig({
   ],
   collections: [
     BlogPost,
+    Hackathon,
     Media
   ],
   globals: [
