@@ -3,6 +3,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import RedditIcon from '@mui/icons-material/Reddit';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import TwitterIcon from '@mui/icons-material/Twitter';
@@ -14,6 +15,7 @@ const iconList = {
   facebook: FacebookIcon,
   github: GitHubIcon,
   instagram: InstagramIcon,
+  linkedin: LinkedInIcon,
   reddit: RedditIcon,
   telegram: TelegramIcon,
   twitter: TwitterIcon
