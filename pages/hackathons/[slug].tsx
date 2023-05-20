@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Container, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import { notFound } from 'next/navigation';
 import AppFooter from '../../components/AppFooter';
 import AppHeader from '../../components/AppHeader';
@@ -8,7 +8,7 @@ import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
 import { serializeRichText } from '../../utils/payload-richtext';
-import { BlogPost, FooterData, Hackathon, PayloadMedia } from '../../utils/payload-types';
+import { FooterData, Hackathon, PayloadMedia } from '../../utils/payload-types';
 import { OpenGraphTags, RichTextNode, SocialLink } from '../../utils/types';
 
 type RouteParams = {
@@ -20,9 +20,10 @@ type Props = {
   footer: FooterData;
 }
 
-export default function BlogPost({ post, metadata, footer }: Props) {
+export default function Hackathon({ post, metadata, footer }: Props) {
   const postedDate = new Date(post.postedDate)
     .toLocaleDateString('en-us', {month: 'long', day: 'numeric', year: 'numeric' });
+  const featuredImage = post.featuredImage as PayloadMedia;
   
   return (
     <>
@@ -35,6 +36,16 @@ export default function BlogPost({ post, metadata, footer }: Props) {
           <Typography variant='h1' sx={{ mt: '1rem' }}>{post.title}</Typography>
           <Typography variant='subtitle1' gutterBottom>Created for {post.event} ({postedDate})</Typography>
           <div className='blog-content'>
+            {post.showFeaturedImage && featuredImage && <Box
+              component="img"
+              sx={{
+                height: '100%',
+                width: '80%',
+                marginLeft: '10%'
+              }}
+              alt={featuredImage.altText}
+              src={featuredImage.url}
+            />}
             {serializeRichText(post.content as RichTextNode[])}
           </div>
         </Container>
@@ -51,7 +62,7 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
     collection: 'hackathon'
   });
   
-  const post = data.docs.find(post => post.slug === params.slug) as BlogPost;
+  const post = data.docs.find(post => post.slug === params.slug) as Hackathon;
 
   if (!post) {
     notFound();

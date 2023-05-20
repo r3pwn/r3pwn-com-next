@@ -22,6 +22,7 @@ export interface BlogPost {
   title: string;
   description: string;
   featuredImage?: string | PayloadMedia;
+  showFeaturedImage?: boolean;
   content: {
     [k: string]: unknown;
   }[];
@@ -49,6 +50,7 @@ export interface Hackathon {
   description: string;
   event: string;
   featuredImage?: string | PayloadMedia;
+  showFeaturedImage?: boolean;
   content: {
     [k: string]: unknown;
   }[];

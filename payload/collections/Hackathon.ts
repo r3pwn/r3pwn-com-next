@@ -3,6 +3,15 @@ import { bustCache } from '../utils/cache-buster';
 
 const Hackathon: CollectionConfig = {
   slug: 'hackathon',
+  admin: {
+    useAsTitle: 'title',
+    preview: (doc) => {
+			if (doc?.slug) {
+				return `/hackathons/${doc.slug}`;
+			}
+			return null;
+		}
+  },
   fields: [
     {
       name: 'title',
@@ -23,6 +32,10 @@ const Hackathon: CollectionConfig = {
       name: 'featuredImage',
       type: 'relationship',
       relationTo: 'media'
+    },
+    {
+      name: 'showFeaturedImage',
+      type: 'checkbox'
     },
     {
       name: 'content',

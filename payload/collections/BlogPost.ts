@@ -3,6 +3,15 @@ import { bustCache } from '../utils/cache-buster';
 
 const BlogPost: CollectionConfig = {
   slug: 'blog-post',
+  admin: {
+    useAsTitle: 'title',
+    preview: (doc) => {
+			if (doc?.slug) {
+				return `/blog/${doc.slug}`;
+			}
+			return null;
+		}
+  },
   fields: [
     {
       name: 'title',
@@ -18,6 +27,10 @@ const BlogPost: CollectionConfig = {
       name: 'featuredImage',
       type: 'relationship',
       relationTo: 'media'
+    },
+    {
+      name: 'showFeaturedImage',
+      type: 'checkbox'
     },
     {
       name: 'content',
