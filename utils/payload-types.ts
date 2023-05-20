@@ -82,7 +82,7 @@ export interface FooterData {
   socialLinks?: {
     ariaLabel?: string;
     url?: string;
-    icon?: 'email' | 'github' | 'telegram' | 'twitter';
+    icon?: 'email' | 'facebook' | 'github' | 'instagram' | 'reddit' | 'telegram' | 'twitter';
     openInNewTab?: boolean;
     id?: string;
   }[];
