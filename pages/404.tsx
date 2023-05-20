@@ -1,8 +1,6 @@
 import Head from 'next/head';
 
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
+import { Container, Link, Typography } from '@mui/material';
 import AppFooter from '../components/AppFooter';
 import AppHeader from '../components/AppHeader';
 import { getPayloadClient } from '../payload/payloadClient';

@@ -1,6 +1,4 @@
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Typography from '@mui/material/Typography';
+import { Box, Link, Typography } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import escapeHTML from 'escape-html';
 import { Fragment } from 'react';

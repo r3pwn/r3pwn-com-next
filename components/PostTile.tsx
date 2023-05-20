@@ -1,11 +1,5 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { SxProps, Theme } from '@mui/material';
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import { Card, CardActionArea, CardActions, CardContent, CardMedia, SxProps, Theme, Typography } from '@mui/material';
 import { PayloadMedia } from '../utils/payload-types';
 
 type Props = {

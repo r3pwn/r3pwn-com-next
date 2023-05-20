@@ -1,9 +1,4 @@
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import IconButton from "@mui/material/IconButton";
-import SvgIcon from "@mui/material/SvgIcon";
-import Typography from "@mui/material/Typography";
+import { AppBar, Box, Container, IconButton, SvgIcon, Typography } from "@mui/material";
 import { getIcon } from "../utils/payload-icons";
 import { SocialLink } from "../utils/types";
 
