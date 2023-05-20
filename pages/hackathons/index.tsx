@@ -9,10 +9,11 @@ import PostTile from '../../components/PostTile';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
-import { FooterData, HackathonProject, OpenGraphTags } from '../../utils/types';
+import { FooterData, Hackathon, PayloadMedia } from '../../utils/payload-types';
+import { OpenGraphTags, SocialLink } from '../../utils/types';
 
 type Props = {
-  posts: HackathonProject[];
+  posts: Hackathon[];
   metadata: OpenGraphTags;
   footer: FooterData;
 }
@@ -34,14 +35,14 @@ export default function Blog({ posts, metadata, footer }: Props) {
                 title={`${post.event} - ${post.title}`}
                 description={post.description}
                 url={`/hackathons/${post.slug}`}
-                image={post.featuredImage}
+                image={post.featuredImage as PayloadMedia}
                 sx={{ ml: { xs: 'auto', md: '0'}, mr: { xs: 'auto', md: '0'} }}
               />
             ))}
           </Box>
         </Container>
       </main>
-      <AppFooter icons={footer.socialLinks} text={footer.copyrightText}/>
+      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText}/>
     </>
   )
 }

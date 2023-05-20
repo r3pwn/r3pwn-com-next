@@ -8,7 +8,8 @@ import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
 import { serializeRichText } from '../../utils/payload-richtext';
-import { BlogPost, FooterData, OpenGraphTags } from '../../utils/types';
+import { BlogPost, FooterData, PayloadMedia } from '../../utils/payload-types';
+import { OpenGraphTags, RichTextNode, SocialLink } from '../../utils/types';
 
 type RouteParams = {
   slug: string;
@@ -34,11 +35,11 @@ export default function BlogPost({ post, metadata, footer }: Props) {
           <Typography variant='h1' sx={{ mt: '1rem' }}>{post.title}</Typography>
           <Typography variant='subtitle1' gutterBottom>Posted on {postedDate}</Typography>
           <div className='blog-content'>
-            {serializeRichText(post.content)}
+            {serializeRichText(post.content as RichTextNode[])}
           </div>
         </Container>
       </main>
-      <AppFooter icons={footer.socialLinks} text={footer.copyrightText}/>
+      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText}/>
     </>
   )
 }
@@ -67,7 +68,7 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
   } as OpenGraphTags;
 
   if (post.featuredImage) {
-    metadata.image = post.featuredImage.url;
+    metadata.image = (post.featuredImage as PayloadMedia).url;
   }
 
   return {

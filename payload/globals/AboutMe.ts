@@ -3,6 +3,9 @@ import { bustCache } from "../utils/cache-buster";
 
 const AboutMe: GlobalConfig = {
   slug: "about-me",
+  typescript: {
+    interface: "AboutMeData"
+  },
   fields: [
     {
       name: "image",

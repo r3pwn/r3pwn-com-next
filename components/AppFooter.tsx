@@ -9,7 +9,7 @@ import { SocialLink } from "../utils/types";
 
 type Props = {
   icons: SocialLink[];
-  text: string;
+  text?: string;
 }
 
 function AppFooter({ icons, text }: Props) {

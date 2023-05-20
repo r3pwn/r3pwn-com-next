@@ -7,12 +7,8 @@ import { getPayloadClient } from "../payload/payloadClient";
 import { SECONDS_PER_DAY } from '../utils/constants';
 import { generateMetadataTags } from '../utils/opengraph-tags';
 import { serializeRichText } from "../utils/payload-richtext";
-import { FooterData, OpenGraphTags, PayloadMedia, RichTextNode } from "../utils/types";
-
-type AboutMeData = {
-  image: PayloadMedia;
-  content: RichTextNode[];
-}
+import { AboutMeData, FooterData } from '../utils/payload-types';
+import { OpenGraphTags, RichTextNode, SocialLink } from "../utils/types";
 
 type Props = {
   data: AboutMeData;
@@ -30,10 +26,10 @@ export default function About({ data, metadata, footer }: Props) {
       <main>
         <Container maxWidth="lg">
           <Typography variant="h1" gutterBottom sx={{ mt: '1rem' }}>About me</Typography>
-          {serializeRichText(data.content)}
+          {serializeRichText(data.content as RichTextNode[])}
         </Container>
       </main>
-      <AppFooter icons={footer.socialLinks} text={footer.copyrightText}/>
+      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText || ''}/>
     </>
   )
 }

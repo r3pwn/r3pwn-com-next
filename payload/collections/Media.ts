@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload/types';
 
 const Media: CollectionConfig = {
   slug: 'media',
+  typescript: {
+    interface: 'PayloadMedia'
+  },
   fields: [
     {
       name: "altText",
@@ -14,7 +17,7 @@ const Media: CollectionConfig = {
     staticURL: `${process.env.GCS_BASEURL}${process.env.GCS_BUCKET}`,
     staticDir: 'media',
     mimeTypes: ['image/*']
-  },
+  }
 };
 
 export default Media;

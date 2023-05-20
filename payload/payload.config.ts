@@ -36,7 +36,7 @@ export default buildConfig({
     Footer
   ],
   typescript: {
-    outputFile: path.resolve(__dirname, '../payload-types.ts'),
+    outputFile: path.resolve(__dirname, '../utils/payload-types.ts'),
   },
   upload: {
     limits: {

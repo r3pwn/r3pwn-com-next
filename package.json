@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generatetypes": "PAYLOAD_CONFIG_PATH=payload/payload.config.ts yarn payload generate:types",
+    "predev": "yarn generatetypes",
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",

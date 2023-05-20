@@ -3,6 +3,9 @@ import { getSupportedIcons } from "../../utils/payload-icons";
 
 const Footer: GlobalConfig = {
   slug: "footer",
+  typescript: {
+    interface: 'FooterData'
+  },
   fields: [
     {
       name: 'socialLinks',

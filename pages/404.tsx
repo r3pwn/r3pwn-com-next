@@ -8,7 +8,8 @@ import AppHeader from '../components/AppHeader';
 import { getPayloadClient } from '../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../utils/constants';
 import { generateMetadataTags } from '../utils/opengraph-tags';
-import { FooterData, OpenGraphTags } from '../utils/types';
+import { FooterData } from '../utils/payload-types';
+import { OpenGraphTags, SocialLink } from '../utils/types';
 
 type Props = {
   metadata: OpenGraphTags;
@@ -32,7 +33,7 @@ export default function NotFound({ metadata, footer }: Props) {
           </Typography>
         </Container>
       </main>
-      <AppFooter icons={footer.socialLinks} text={footer.copyrightText}/>
+      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText}/>
     </>
   )
 }
