@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
 import { Box, Container, Typography } from '@mui/material';
-import { notFound } from 'next/navigation';
 import AppFooter from '../../components/AppFooter';
 import AppHeader from '../../components/AppHeader';
 import { getPayloadClient } from '../../payload/payloadClient';
@@ -65,7 +64,9 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
   const post = data.docs.find(post => post.slug === params.slug) as Hackathon;
 
   if (!post) {
-    notFound();
+    return {
+      notFound: true
+    };
   }
 
   const footer = await payload.findGlobal({
@@ -101,6 +102,6 @@ export async function getStaticPaths() {
 
   return {
     paths: data.docs.map(post => ({ params: { slug: post.slug } })),
-    fallback: false // can also be true or 'blocking'
+    fallback: 'blocking'
   };
 }

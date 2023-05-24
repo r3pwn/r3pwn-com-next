@@ -1,1 +1,6 @@
-export const bustCache = (path: String) => fetch(`${process.env.SITE_HOST}/api/cache-buster?path=${path}&secret=${process.env.CACHE_BUSTER_SECRET}`);
+export const bustCache = (paths: string[]) => {
+  return fetch(`${process.env.SITE_HOST}/api/cache-buster?secret=${process.env.CACHE_BUSTER_SECRET}`, {
+    method: "POST",
+    body: JSON.stringify(paths)
+  });
+};

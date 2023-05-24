@@ -74,10 +74,20 @@ const Hackathon: CollectionConfig = {
   hooks: {
     afterChange: [
       async (args) => {
-        await bustCache('/hackathons');
+        let routes = ['/hackathons'];
         if (args.operation === 'update') {
-          await bustCache(`/hackathons/${args.previousDoc.slug}`);
+          routes.unshift(`/hackathons/${args.previousDoc.slug}`);
         }
+
+        await bustCache(routes);
+      }
+    ],
+    afterDelete: [
+      async (args) => {
+        await bustCache([
+          '/hackathons',
+          `/hackathons/${args.doc.slug}`
+        ]);
       }
     ]
   }

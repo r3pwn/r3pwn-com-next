@@ -30,7 +30,7 @@ const AboutMe: GlobalConfig = {
   hooks: {
     afterChange: [
       async () => {
-        await bustCache('/about');
+        await bustCache(['/about']);
       }
     ]
   }

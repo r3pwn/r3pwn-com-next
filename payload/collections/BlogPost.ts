@@ -76,10 +76,20 @@ const BlogPost: CollectionConfig = {
   hooks: {
     afterChange: [
       async (args) => {
-        await bustCache('/blog');
+        let routes = ['/blog'];
         if (args.operation === 'update') {
-          await bustCache(`/blog/${args.previousDoc.slug}`);
+          routes.unshift(`/blog/${args.previousDoc.slug}`);
         }
+        
+        await bustCache(routes);
+      }
+    ],
+    afterDelete: [
+      async (args) => {
+        await bustCache([
+          '/hackathons',
+          `/hackathons/${args.doc.slug}`
+        ]);
       }
     ]
   }
