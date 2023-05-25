@@ -6,6 +6,7 @@ const { withPayload } = require('@payloadcms/next-payload');
 const nextConfig = {
   reactStrictMode: true,
   async redirects () {
+    // These exist to not break current links to the site
     return [
       {
         source: '/blog/:year/:month/:day/:slug.html',
@@ -28,7 +29,15 @@ const nextConfig = {
         permanent: true
       }
     ]
-  }
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/generated-sitemap'
+      }
+    ]
+  },
 };
 
 const payloadConfig = {
