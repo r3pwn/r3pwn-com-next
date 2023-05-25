@@ -35,6 +35,10 @@ const nextConfig = {
       {
         source: '/sitemap.xml',
         destination: '/api/generated-sitemap'
+      },
+      {
+        source: '/blog/feed.xml',
+        destination: '/api/blog-feed'
       }
     ]
   },
