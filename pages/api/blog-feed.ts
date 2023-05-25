@@ -8,7 +8,7 @@ function createBlogItem(post: BlogPost) {
     <item>
       <title>${post.title}</title>
       <description>${post.description}</description>
-      <pubDate>${post.postedDate}</pubDate>
+      <pubDate>${new Date(post.postedDate).toUTCString()}</pubDate>
       <link>${process.env.SITE_HOST}/blog/${post.slug}</link>
       <guid isPermaLink="true">${process.env.SITE_HOST}/blog/${post.slug}</guid>
     </item>
