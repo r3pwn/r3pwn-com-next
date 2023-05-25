@@ -20,8 +20,7 @@ export default function NotFound({ metadata, footer }: Props) {
         {generateMetadataTags(metadata)}
         <meta name="robots" content="noindex" />
       </Head>
-      <PageWrapper footer={footer}>
-        <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Content not found</Typography>
+      <PageWrapper title='Content not found' footer={footer}>
         <Typography variant='body1'>
           Unfortunately, the content you are looking for is not available at this URL. Please try visiting the <Link href='/blog'>Blog Posts</Link> page
           to see if the content you&apos;re looking for is available at a different URL.

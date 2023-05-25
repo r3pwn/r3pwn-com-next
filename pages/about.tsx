@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import PageWrapper from '../components/PageWrapper';
 import { getPayloadClient } from "../payload/payloadClient";
 import { SECONDS_PER_DAY } from '../utils/constants';
@@ -23,8 +23,7 @@ export default function About({ data, metadata, footer }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <PageWrapper footer={footer}>
-        <Typography variant="h1" gutterBottom sx={{ mt: '1rem' }}>About me</Typography>
+      <PageWrapper title='About me' footer={footer}>
         <Box component="div" sx={{ display: { xs: 'flex', md: 'block' }, flexDirection: 'column'}}>
           <Box
             component="img"
