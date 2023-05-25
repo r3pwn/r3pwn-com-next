@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import PageWrapper from '../../components/PageWrapper';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
@@ -28,9 +28,7 @@ export default function Hackathon({ post, metadata, footer }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <PageWrapper footer={footer}>
-        <Typography variant='h1' sx={{ mt: '1rem' }}>{post.title}</Typography>
-        <Typography variant='subtitle1' component='p' gutterBottom>Created for {post.event} ({postedDate})</Typography>
+      <PageWrapper title={post.title} subtitle={`Created for ${post.event} (${postedDate})`} footer={footer}>
         <div className='blog-content'>
           {post.showFeaturedImage && featuredImage && <Box
             component="img"

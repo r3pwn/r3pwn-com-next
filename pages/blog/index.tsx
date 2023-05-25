@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import PageWrapper from '../../components/PageWrapper';
 import PostTile from '../../components/PostTile';
 import { getPayloadClient } from '../../payload/payloadClient';
@@ -21,8 +21,7 @@ export default function Blog({ posts, metadata, footer }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <PageWrapper footer={footer}>
-        <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Blog posts</Typography>
+      <PageWrapper title='Blog posts' footer={footer}>
         <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           {posts.map(post => (
             <PostTile 
