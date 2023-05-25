@@ -1,14 +1,13 @@
 import Head from 'next/head';
 
-import { Box, Container, Typography } from '@mui/material';
-import AppFooter from '../../components/AppFooter';
-import AppHeader from '../../components/AppHeader';
+import { Box, Typography } from '@mui/material';
+import PageWrapper from '../../components/PageWrapper';
 import PostTile from '../../components/PostTile';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
 import { FooterData, Hackathon, PayloadMedia } from '../../utils/payload-types';
-import { OpenGraphTags, SocialLink } from '../../utils/types';
+import { OpenGraphTags } from '../../utils/types';
 
 type Props = {
   posts: Hackathon[];
@@ -22,25 +21,21 @@ export default function Blog({ posts, metadata, footer }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <AppHeader />
-      <main>
-        <Container maxWidth="lg">
-          <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Hackathon projects</Typography>
-          <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            {posts.map(post => (
-              <PostTile 
-                key={post.slug}
-                title={`${post.event} - ${post.title}`}
-                description={post.description}
-                url={`/hackathons/${post.slug}`}
-                image={post.featuredImage as PayloadMedia}
-                sx={{ ml: { xs: 'auto', md: '0'}, mr: { xs: 'auto', md: '0'} }}
-              />
-            ))}
-          </Box>
-        </Container>
-      </main>
-      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText}/>
+      <PageWrapper footer={footer}>
+        <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Hackathon projects</Typography>
+        <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          {posts.map(post => (
+            <PostTile 
+              key={post.slug}
+              title={`${post.event} - ${post.title}`}
+              description={post.description}
+              url={`/hackathons/${post.slug}`}
+              image={post.featuredImage as PayloadMedia}
+              sx={{ ml: { xs: 'auto', md: '0'}, mr: { xs: 'auto', md: '0'} }}
+            />
+          ))}
+        </Box>
+      </PageWrapper>
     </>
   )
 }

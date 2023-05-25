@@ -1,14 +1,13 @@
 import Head from 'next/head';
 
-import { Box, Container, Typography } from '@mui/material';
-import AppFooter from '../../components/AppFooter';
-import AppHeader from '../../components/AppHeader';
+import { Box, Typography } from '@mui/material';
+import PageWrapper from '../../components/PageWrapper';
 import { getPayloadClient } from '../../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../../utils/constants';
 import { generateMetadataTags } from '../../utils/opengraph-tags';
 import { serializeRichText } from '../../utils/payload-richtext';
 import { BlogPost, FooterData, PayloadMedia } from '../../utils/payload-types';
-import { OpenGraphTags, RichTextNode, SocialLink } from '../../utils/types';
+import { OpenGraphTags, RichTextNode } from '../../utils/types';
 
 type RouteParams = {
   slug: string;
@@ -28,27 +27,23 @@ export default function BlogPost({ post, metadata, footer }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <AppHeader />
-      <main className='blog-post'>
-        <Container maxWidth="lg" sx={{ mb: '1rem' }}>
-          <Typography variant='h1' sx={{ mt: '1rem' }}>{post.title}</Typography>
-          <Typography variant='subtitle1' gutterBottom>Posted on {postedDate}</Typography>
-          <div className='blog-content'>
-            {post.showFeaturedImage && featuredImage && <Box
-              component="img"
-              sx={{
-                height: '100%',
-                width: '80%',
-                marginLeft: '10%'
-              }}
-              alt={featuredImage.altText}
-              src={featuredImage.url}
-            />}
-            {serializeRichText(post.content as RichTextNode[])}
-          </div>
-        </Container>
-      </main>
-      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText}/>
+      <PageWrapper className='blog-post' footer={footer}>
+        <Typography variant='h1' sx={{ mt: '1rem' }}>{post.title}</Typography>
+        <Typography variant='subtitle1' component='p' gutterBottom>Posted on {postedDate}</Typography>
+        <div className='blog-content'>
+          {post.showFeaturedImage && featuredImage && <Box
+            component="img"
+            sx={{
+              height: '100%',
+              width: '80%',
+              marginLeft: '10%'
+            }}
+            alt={featuredImage.altText}
+            src={featuredImage.url}
+          />}
+          {serializeRichText(post.content as RichTextNode[])}
+        </div>
+      </PageWrapper>
     </>
   )
 }

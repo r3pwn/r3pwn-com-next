@@ -1,13 +1,12 @@
 import Head from 'next/head';
 
-import { Container, Link, Typography } from '@mui/material';
-import AppFooter from '../components/AppFooter';
-import AppHeader from '../components/AppHeader';
+import { Link, Typography } from '@mui/material';
+import PageWrapper from '../components/PageWrapper';
 import { getPayloadClient } from '../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../utils/constants';
 import { generateMetadataTags } from '../utils/opengraph-tags';
 import { FooterData } from '../utils/payload-types';
-import { OpenGraphTags, SocialLink } from '../utils/types';
+import { OpenGraphTags } from '../utils/types';
 
 type Props = {
   metadata: OpenGraphTags;
@@ -21,17 +20,13 @@ export default function NotFound({ metadata, footer }: Props) {
         {generateMetadataTags(metadata)}
         <meta name="robots" content="noindex" />
       </Head>
-      <AppHeader />
-      <main>
-        <Container maxWidth="lg">
-          <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Content not found</Typography>
-          <Typography variant='body1'>
-            Unfortunately, the content you are looking for is not available at this URL. Please try visiting the <Link href='/blog'>Blog Posts</Link> page
-            to see if the content you&apos;re looking for is available at a different URL.
-          </Typography>
-        </Container>
-      </main>
-      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText}/>
+      <PageWrapper footer={footer}>
+        <Typography variant='h1' gutterBottom sx={{ mt: '1rem' }}>Content not found</Typography>
+        <Typography variant='body1'>
+          Unfortunately, the content you are looking for is not available at this URL. Please try visiting the <Link href='/blog'>Blog Posts</Link> page
+          to see if the content you&apos;re looking for is available at a different URL.
+        </Typography>
+      </PageWrapper>
     </>
   )
 }
