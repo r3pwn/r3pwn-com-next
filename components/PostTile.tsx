@@ -20,7 +20,7 @@ export default function PostTile({ title, description, image, url, sx }: Props) 
           height="140"
           image={image.url}
         />}
-        <CardContent>
+        <CardContent sx={{ mr: 'auto '}}>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>

@@ -3,34 +3,37 @@ import { SECONDS_PER_DAY } from '../utils/constants';
 import { generateMetadataTags } from '../utils/opengraph-tags';
 import { OpenGraphTags } from "../utils/types";
 
-import ConstructionIcon from '@mui/icons-material/Construction';
-import ReportProblemIcon from '@mui/icons-material/ReportProblem';
-import { Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import PageWrapper from '../components/PageWrapper';
+import PostTile from '../components/PostTile';
 import getPayloadClient from '../payload/payloadClient';
-import { FooterData } from '../utils/payload-types';
+import { FooterData, HomePageData, PayloadMedia } from '../utils/payload-types';
 
 type Props = {
+  data: HomePageData,
   metadata: OpenGraphTags;
   footer: FooterData;
 }
 
-export default function Home({ metadata, footer }: Props) {
+export default function Home({ data, metadata, footer }: Props) {
   return (
     <>
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
       <PageWrapper footer={footer}>
-        <div style={{ color: 'coral', height: '50vh', paddingTop: '5rem' }}>
-          <div className='icons' style={{ textAlign: 'center' }}>
-            <ConstructionIcon sx={{ height: '5rem', width: '5rem' }} />
-            <ReportProblemIcon sx={{ height: '5rem', width: '5rem' }} />
-          </div>
-          <Typography variant='h1' style={{ textAlign: 'center' }}>
-            This site is currently under construction...
-          </Typography>
-        </div>
+        <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', mt: '2rem' }}>
+          {data.layout?.map(tile => (
+            <PostTile 
+              key={tile.id}
+              title={tile.title}
+              description={tile.description}
+              url={tile.link}
+              image={tile.image as PayloadMedia}
+              sx={{ ml: { xs: 'auto', md: '0'}, mr: { xs: 'auto', md: '0'} }}
+            />
+          ))}
+        </Box>
       </PageWrapper>
     </>
   )
@@ -45,6 +48,10 @@ export async function getStaticProps() {
     url: process.env.SITE_HOST
   } as OpenGraphTags;
 
+  const data = await payload.findGlobal({
+    slug: 'home-page'
+  });
+
   const footer = await payload.findGlobal({
     slug: 'footer'
   });
@@ -52,6 +59,7 @@ export async function getStaticProps() {
 
   return {
     props: {
+      data,
       metadata,
       footer
     },

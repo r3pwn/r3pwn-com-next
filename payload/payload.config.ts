@@ -8,6 +8,7 @@ import Hackathon from './collections/Hackathon';
 import Media from './collections/Media';
 import AboutMe from './globals/AboutMe';
 import Footer from './globals/Footer';
+import HomePage from './globals/HomePage';
 
 const googleCloudStorageAdapter = gcsAdapter({
   options: {
@@ -33,6 +34,7 @@ export default buildConfig({
   ],
   globals: [
     AboutMe,
+    HomePage,
     Footer
   ],
   typescript: {

@@ -21,7 +21,7 @@ export default function Blog({ posts, metadata, footer }: Props) {
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <PageWrapper title='Hackathon projects' footer={footer}>
+      <PageWrapper title='Hackathon Projects' footer={footer}>
         <Box sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
           {posts.map(post => (
             <PostTile 
@@ -51,7 +51,7 @@ export async function getStaticProps() {
   });
 
   const metadata = {
-    title: 'Hackathon projects | r3pwn',
+    title: 'Hackathon Projects | r3pwn',
     description: 'Some of the projects I\'ve been involved with at hackathons...',
     url: `${process.env.SITE_HOST}/hackathons`
   } as OpenGraphTags;

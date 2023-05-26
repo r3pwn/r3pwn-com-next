@@ -14,6 +14,7 @@ export interface Config {
   };
   globals: {
     'about-me': AboutMeData;
+    'home-page': HomePageData;
     footer: FooterData;
   };
 }
@@ -75,6 +76,18 @@ export interface AboutMeData {
   image: string | PayloadMedia;
   content: {
     [k: string]: unknown;
+  }[];
+}
+export interface HomePageData {
+  id: string;
+  layout?: {
+    title: string;
+    description: string;
+    image?: string | PayloadMedia;
+    link: string;
+    id?: string;
+    blockName?: string;
+    blockType: 'link-tile';
   }[];
 }
 export interface FooterData {
