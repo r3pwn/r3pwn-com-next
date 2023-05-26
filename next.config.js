@@ -34,11 +34,11 @@ const nextConfig = {
     return [
       {
         source: '/sitemap.xml',
-        destination: '/api/generated-sitemap'
+        destination: '/api/next/generated-sitemap'
       },
       {
         source: '/blog/feed.xml',
-        destination: '/api/blog-feed'
+        destination: '/api/next/blog-feed'
       }
     ]
   },
