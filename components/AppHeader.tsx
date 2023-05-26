@@ -9,7 +9,7 @@ type Props = {
 
 const pages = [
   { name: 'Blog posts', path: '/blog' },
-  { name: 'Projects', path: '/blog' },
+  { name: 'Projects', path: '/projects' },
   { name: 'Hackathons', path: '/hackathons' },
   { name: 'About me', path: '/about' }
 ];
