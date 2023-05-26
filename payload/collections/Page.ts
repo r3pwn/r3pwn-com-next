@@ -3,6 +3,7 @@ import Biography from '../blocks/Biography';
 import ParentTileSheet from '../blocks/ParentTileSheet';
 import RichText from '../blocks/RichText';
 import TileSheet from '../blocks/TileSheet';
+import { bustCache } from '../utils/cache-buster';
 
 const Page: CollectionConfig = {
   slug: 'page',
@@ -71,7 +72,26 @@ const Page: CollectionConfig = {
         }
       }
     }
-  ]
+  ],
+  hooks: {
+    afterChange: [
+      async (args) => {
+        const currentPaths = args.doc.breadcrumbs?.map(crumb => crumb.url);
+        const prevPaths = args.previousDoc ? 
+          args.previousDoc.breadcrumbs?.map(crumb => crumb.url) : [];
+
+        const paths = new Set([...currentPaths, ...prevPaths]);
+        
+        await bustCache(Array.from(paths));
+      }
+    ],
+    afterDelete: [
+      async (args) => {
+        const paths = args.doc.breadcrumbs?.map(crumb => crumb.url);
+        await bustCache(paths);
+      }
+    ]
+  }
 };
 
 export default Page;
