@@ -1,62 +1,33 @@
 import { toXML } from 'jstoxml';
 import { NextApiRequest, NextApiResponse } from "next";
-import { Payload } from 'payload';
 import getPayloadClient from '../../../payload/payloadClient';
+import { PageData } from '../../../utils/payload-types';
 
 const xmlOptions = {
   header: true,
   indent: '  '
 };
 
-async function getBlogPages (payload: Payload) {
-  const posts = await payload.find({
-    collection: 'blog-post'
-  });
-
-  return [
-    {
-      path: '/blog',
-      lastUpdated: new Date().toISOString()
-    },
-    ...posts.docs.map(blogPost => (
-      {
-        path: `/blog/${blogPost.slug}`,
-        lastUpdated: new Date(blogPost.updatedAt).toISOString()
-      }))
-  ]
-}
-
-async function getHackathonPages (payload: Payload) {
-  const posts = await payload.find({
-    collection: 'hackathon'
-  });
-
-  return [
-    {
-      path: '/hackathons',
-      lastUpdated: new Date().toISOString()
-    },
-    ...posts.docs.map(hackathon => (
-      {
-        path: `/hackathons/${hackathon.slug}`,
-        lastUpdated: new Date(hackathon.updatedAt).toISOString()
-      }))
-  ]
-}
-
 async function getAllPages () {
   const payload = await getPayloadClient();
 
-  return [
-    ...['/', '/about'].map(path => (
-      {
-        path,
-        lastUpdated: new Date().toISOString()
-      }
-    )),
-    ...(await getBlogPages(payload)),
-    ...(await getHackathonPages(payload))
-  ]
+  const pages = (await payload.find({ collection: 'page' })).docs as PageData[];
+
+  return pages.map(page => (
+    {
+      // "/index" should be replaced with "/"
+      path: page.breadcrumbs?.at(-1)?.url === '/index' ? '/' : page.breadcrumbs?.at(-1)?.url ?? '/',
+      lastUpdated: page.postedDate
+    }
+  )).sort(function (a, b) {
+    if (a.path < b.path) {
+      return -1;
+    }
+    if (a.path > b.path) {
+      return 1;
+    }
+    return 0;
+  });;
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

@@ -12,7 +12,7 @@ function replaceEscapes(input: string) {
 export const serializeRichText = (children: RichTextNode[]) => children.map((node, i) => {
   if (Text.isText(node)) {
     let classNames = `${node.strikethrough ? 'richtext-strikethrough' : ''}`;
-    let text = (<span className={classNames} dangerouslySetInnerHTML={{__html: replaceEscapes(node.text)}} />);
+    let text = (<span key={i} className={classNames} dangerouslySetInnerHTML={{__html: replaceEscapes(node.text)}} />);
 
     if (node.bold) {
       text = (
@@ -45,10 +45,6 @@ export const serializeRichText = (children: RichTextNode[]) => children.map((nod
         {text}
       </Fragment>
     );
-  }
-
-  if (!node) {
-    return null;
   }
 
   switch (node.type) {
@@ -98,6 +94,7 @@ export const serializeRichText = (children: RichTextNode[]) => children.map((nod
     case 'upload':
       return (
         <Box
+          key={i}
           component="img"
           sx={{
             height: '100%',

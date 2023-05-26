@@ -1,14 +1,12 @@
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
 import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs';
+import nestedDocs from "@payloadcms/plugin-nested-docs";
 import path from 'path';
 import { buildConfig } from 'payload/config';
 
-import BlogPost from './collections/BlogPost';
-import Hackathon from './collections/Hackathon';
 import Media from './collections/Media';
-import AboutMe from './globals/AboutMe';
+import Page from './collections/Page';
 import Footer from './globals/Footer';
-import HomePage from './globals/HomePage';
 
 const googleCloudStorageAdapter = gcsAdapter({
   options: {
@@ -19,6 +17,12 @@ const googleCloudStorageAdapter = gcsAdapter({
 
 export default buildConfig({
   plugins: [
+    nestedDocs({
+      collections: ["page"],
+      generateLabel: (_, doc) => doc.title as string,
+      generateURL: (docs) =>
+        docs.reduce((url, doc) => `${url}/${doc.slug as string}`, ""),
+    }),
     cloudStorage({
       collections: {
         'media': {
@@ -28,13 +32,10 @@ export default buildConfig({
     })
   ],
   collections: [
-    BlogPost,
-    Hackathon,
+    Page,
     Media
   ],
   globals: [
-    AboutMe,
-    HomePage,
     Footer
   ],
   typescript: {

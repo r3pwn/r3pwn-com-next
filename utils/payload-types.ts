@@ -7,29 +7,70 @@
 
 export interface Config {
   collections: {
-    'blog-post': BlogPost;
-    hackathon: Hackathon;
+    page: PageData;
     media: PayloadMedia;
     users: User;
   };
   globals: {
-    'about-me': AboutMeData;
-    'home-page': HomePageData;
     footer: FooterData;
   };
 }
-export interface BlogPost {
+export interface PageData {
   id: string;
   title: string;
+  subtitle?: string;
   description: string;
   featuredImage?: string | PayloadMedia;
-  showFeaturedImage?: boolean;
-  content: {
-    [k: string]: unknown;
-  }[];
+  showTitle?: boolean;
+  content?: (
+    | {
+        image?: string | PayloadMedia;
+        content: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'biography';
+      }
+    | {
+        content: {
+          [k: string]: unknown;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'rich-text';
+      }
+    | {
+        title?: string;
+        tiles?: {
+          title: string;
+          description: string;
+          image?: string | PayloadMedia;
+          link: string;
+          id?: string;
+          blockName?: string;
+          blockType: 'link-tile';
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'tile-sheet';
+      }
+    | {
+        title?: string;
+        id?: string;
+        blockName?: string;
+        blockType: 'parent-tile-sheet';
+      }
+  )[];
   slug: string;
   postedDate: string;
-  enableComments?: boolean;
+  parent?: string | PageData;
+  breadcrumbs?: {
+    doc?: string | PageData;
+    url?: string;
+    label?: string;
+    id?: string;
+  }[];
   updatedAt: string;
   createdAt: string;
 }
@@ -45,21 +86,6 @@ export interface PayloadMedia {
   width?: number;
   height?: number;
 }
-export interface Hackathon {
-  id: string;
-  title: string;
-  description: string;
-  event: string;
-  featuredImage?: string | PayloadMedia;
-  showFeaturedImage?: boolean;
-  content: {
-    [k: string]: unknown;
-  }[];
-  slug: string;
-  postedDate: string;
-  updatedAt: string;
-  createdAt: string;
-}
 export interface User {
   id: string;
   updatedAt: string;
@@ -70,25 +96,6 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password?: string;
-}
-export interface AboutMeData {
-  id: string;
-  image: string | PayloadMedia;
-  content: {
-    [k: string]: unknown;
-  }[];
-}
-export interface HomePageData {
-  id: string;
-  layout?: {
-    title: string;
-    description: string;
-    image?: string | PayloadMedia;
-    link: string;
-    id?: string;
-    blockName?: string;
-    blockType: 'link-tile';
-  }[];
 }
 export interface FooterData {
   id: string;
