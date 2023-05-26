@@ -6,26 +6,22 @@ const { withPayload } = require('@payloadcms/next-payload');
 const nextConfig = {
   reactStrictMode: true,
   async redirects () {
-    // These exist to not break current links to the site
+    // /blog and /hackathons redirects exist to not break current links to the site
     return [
-      {
-        source: '/blog/:year/:month/:day/:slug.html',
-        destination: '/blog/:year-:month-:day-:slug',
-        permanent: true
-      },
       {
         source: '/blog/:year/:month/:day/:slug',
         destination: '/blog/:year-:month-:day-:slug',
         permanent: true
       },
       {
-        source: '/hackathons/:year/:month/:day/:slug.html',
+        source: '/hackathons/:year/:month/:day/:slug',
         destination: '/hackathons/:year-:month-:day-:slug',
         permanent: true
       },
+      // resolve *.html to just *, so /about.html becomes /about
       {
-        source: '/hackathons/:year/:month/:day/:slug',
-        destination: '/hackathons/:year-:month-:day-:slug',
+        source: '/:path*.html',
+        destination: '/:path*',
         permanent: true
       }
     ]
@@ -35,10 +31,6 @@ const nextConfig = {
       {
         source: '/sitemap.xml',
         destination: '/api/next/generated-sitemap'
-      },
-      {
-        source: '/blog/feed.xml',
-        destination: '/api/next/blog-feed'
       }
     ]
   },
