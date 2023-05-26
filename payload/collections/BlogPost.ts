@@ -87,8 +87,8 @@ const BlogPost: CollectionConfig = {
     afterDelete: [
       async (args) => {
         await bustCache([
-          '/hackathons',
-          `/hackathons/${args.doc.slug}`
+          '/blog',
+          `/blog/${args.doc.slug}`
         ]);
       }
     ]
