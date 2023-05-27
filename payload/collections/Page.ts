@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types';
+import { PageData } from '../../utils/payload-types';
 import Biography from '../blocks/Biography';
 import ParentTileSheet from '../blocks/ParentTileSheet';
 import RichText from '../blocks/RichText';
@@ -75,20 +76,31 @@ const Page: CollectionConfig = {
   ],
   hooks: {
     afterChange: [
-      async (args) => {
-        const currentPaths = args.doc.breadcrumbs?.map(crumb => crumb.url);
-        const prevPaths = args.previousDoc ? 
-          args.previousDoc.breadcrumbs?.map(crumb => crumb.url) : [];
+      async (args: { doc: PageData, previousDoc?: PageData }) => {
+        const currentPaths = args.doc.breadcrumbs?.map(crumb => crumb.url as string) ?? [];
+        const prevPaths = 
+          args.previousDoc?.breadcrumbs?.map(crumb => crumb.url as string) ?? [];
 
         const paths = new Set([...currentPaths, ...prevPaths]);
+
+        if (paths.has('/index')) {
+          paths.delete('/index');
+          paths.add('/');
+        }
         
         await bustCache(Array.from(paths));
       }
     ],
     afterDelete: [
-      async (args) => {
-        const paths = args.doc.breadcrumbs?.map(crumb => crumb.url);
-        await bustCache(paths);
+      async (args: { doc: PageData }) => {
+        const paths = new Set(args.doc.breadcrumbs?.map(crumb => crumb.url as string));
+
+        if (paths.has('/index')) {
+          paths.delete('/index');
+          paths.add('/');
+        }
+
+        await bustCache(Array.from(paths));
       }
     ]
   }
