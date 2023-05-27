@@ -13,6 +13,7 @@ export interface Config {
   };
   globals: {
     footer: FooterData;
+    'header-footer': HeaderFooterData;
   };
 }
 export interface PageData {
@@ -46,7 +47,7 @@ export interface PageData {
           title: string;
           description: string;
           image?: string | PayloadMedia;
-          link: string;
+          link: string | PageData;
           id?: string;
           blockName?: string;
           blockType: 'link-tile';
@@ -99,6 +100,24 @@ export interface User {
 }
 export interface FooterData {
   id: string;
+  socialLinks?: {
+    ariaLabel?: string;
+    url?: string;
+    icon?: 'email' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'reddit' | 'telegram' | 'twitter';
+    openInNewTab?: boolean;
+    id?: string;
+  }[];
+  copyrightText?: string;
+}
+export interface HeaderFooterData {
+  id: string;
+  navigationLinks?: {
+    ariaLabel?: string;
+    url?: string;
+    icon?: 'email' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'reddit' | 'telegram' | 'twitter';
+    openInNewTab?: boolean;
+    id?: string;
+  }[];
   socialLinks?: {
     ariaLabel?: string;
     url?: string;

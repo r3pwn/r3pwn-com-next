@@ -16,7 +16,7 @@ export const renderPageBlocks = (content: PayloadBlock[]) => content.map((block)
               key={tile.id || index}
               title={tile.title}
               description={tile.description}
-              url={tile.link}
+              url={tile.link.breadcrumbs?.at(-1)?.url ?? '/'}
               image={tile.image}
               sx={{ ml: { xs: 'auto', md: '0'}, mr: { xs: 'auto', md: '0'} }}
             />

@@ -20,7 +20,8 @@ const LinkTile: Block = {
     },
     {
       name: 'link',
-      type: 'text',
+      type: 'relationship',
+      relationTo: 'page',
       required: true
     }
   ]

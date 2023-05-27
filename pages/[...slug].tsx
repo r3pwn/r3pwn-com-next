@@ -60,7 +60,7 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
         {
           title: childPage.title,
           description: childPage.description,
-          link: childPage.breadcrumbs?.at(-1)?.url || '',
+          link: childPage,
           image: childPage.featuredImage as PayloadMedia || null,
           blockType: 'link-tile'
         }

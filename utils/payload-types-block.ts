@@ -7,7 +7,7 @@ export type LinkTileBlock = {
   title: string;
   description: string;
   image?: PayloadMedia;
-  link: string;
+  link: PageData;
   id?: string;
   blockName?: string;
   blockType: 'link-tile';
