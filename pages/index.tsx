@@ -6,22 +6,22 @@ import { OpenGraphTags } from "../utils/types";
 import PageWrapper from '../components/PageWrapper';
 import getPayloadClient from '../payload/payloadClient';
 import { renderPageBlocks } from '../utils/payload-page';
-import { FooterData, PageData } from '../utils/payload-types';
+import { HeaderFooterData, PageData } from '../utils/payload-types';
 import { PayloadBlock } from '../utils/payload-types-block';
 
 type Props = {
   data: PageData,
   metadata: OpenGraphTags;
-  footer: FooterData;
+  headerFooter: HeaderFooterData;
 }
 
-export default function Home({ data, metadata, footer }: Props) {
+export default function Home({ data, metadata, headerFooter }: Props) {
   return (
     <>
       <Head>
         {generateMetadataTags(metadata)}
       </Head>
-      <PageWrapper footer={footer}>
+      <PageWrapper headerFooter={headerFooter}>
         {renderPageBlocks(data.content as PayloadBlock[]) as JSX.Element[]}
       </PageWrapper>
     </>
@@ -43,15 +43,15 @@ export async function getStaticProps() {
     };
   }
 
-  const footer = await payload.findGlobal({
-    slug: 'footer'
+  const headerFooter = await payload.findGlobal({
+    slug: 'header-footer'
   });
 
   return {
     props: {
       data: page,
       metadata: getPageMetadata(page),
-      footer
+      headerFooter
     },
     revalidate: SECONDS_PER_DAY * 30
   }

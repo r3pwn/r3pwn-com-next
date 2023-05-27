@@ -1,20 +1,14 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import { AppBar, Box, Button, Container, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
 import * as React from 'react';
+import { PageData } from '../utils/payload-types';
 import LogoIcon from './LogoIcon';
 
 type Props = {
-  minimal?: boolean;
+  navLinks: { label: string, target: string | PageData }[];
 }
 
-const pages = [
-  { name: 'Blog posts', path: '/blog' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Hackathons', path: '/hackathons' },
-  { name: 'About me', path: '/about' }
-];
-
-function AppHeader({ minimal }: Props) {
+function AppHeader({ navLinks }: Props) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -36,7 +30,7 @@ function AppHeader({ minimal }: Props) {
             <LogoIcon fontSize="large" />
           </IconButton>
 
-          {!minimal && <Box sx={{ display: { xs: 'flex', md: 'none' }, zIndex: '1' }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' }, zIndex: '1' }}>
             <IconButton
               size="large"
               aria-label="site navigation link menu"
@@ -65,13 +59,13 @@ function AppHeader({ minimal }: Props) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page.name} component="a" href={page.path} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.name}</Typography>
+              {navLinks.map((link) => (
+                <MenuItem key={link.label} component="a" href={(link.target as PageData).breadcrumbs?.at(-1)?.url} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{link.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
-          </Box>}
+          </Box>
 
           <Box sx={{ position: 'absolute', width: '100%'}}>
             <IconButton 
@@ -82,18 +76,18 @@ function AppHeader({ minimal }: Props) {
             </IconButton>
           </Box>
 
-          {!minimal && <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: '0.5rem' }}>
-            {pages.map((page) => (
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, gap: '0.5rem' }}>
+            {navLinks.map((link) => (
               <Button
-                key={page.name}
-                href={page.path}
+                key={link.label}
+                href={(link.target as PageData).breadcrumbs?.at(-1)?.url}
                 onClick={handleCloseNavMenu}
                 sx={{ color: 'white', display: 'block' }}
               >
-                {page.name}
+                {link.label}
               </Button>
             ))}
-          </Box>}
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

@@ -12,7 +12,6 @@ export interface Config {
     users: User;
   };
   globals: {
-    footer: FooterData;
     'header-footer': HeaderFooterData;
   };
 }
@@ -98,24 +97,11 @@ export interface User {
   lockUntil?: string;
   password?: string;
 }
-export interface FooterData {
-  id: string;
-  socialLinks?: {
-    ariaLabel?: string;
-    url?: string;
-    icon?: 'email' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'reddit' | 'telegram' | 'twitter';
-    openInNewTab?: boolean;
-    id?: string;
-  }[];
-  copyrightText?: string;
-}
 export interface HeaderFooterData {
   id: string;
-  navigationLinks?: {
-    ariaLabel?: string;
-    url?: string;
-    icon?: 'email' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'reddit' | 'telegram' | 'twitter';
-    openInNewTab?: boolean;
+  navigationLinks: {
+    label: string;
+    target: string | PageData;
     id?: string;
   }[];
   socialLinks?: {

@@ -18,26 +18,15 @@ const HeaderFooter: GlobalConfig = {
       },
       fields: [
         {
-          name: 'ariaLabel',
+          name: 'label',
           type: 'text',
+          required: true
         },
         {
-          name: 'url',
-          type: 'text',
-        },
-        {
-          name: 'icon',
-          type: 'select',
-          options: getSupportedIcons().map(iconName => ({
-            label: `${iconName.charAt(0).toUpperCase()}${iconName.slice(1)}`,
-            value: iconName
-          }))
-        },
-        {
-          name: 'openInNewTab',
-          type: 'checkbox',
-          label: 'Open link in new tab',
-          defaultValue: false
+          name: 'target',
+          type: 'relationship',
+          relationTo: 'page',
+          required: true
         }
       ]
     },

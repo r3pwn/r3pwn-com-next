@@ -1,5 +1,5 @@
 import { Container, Typography } from "@mui/material";
-import { FooterData } from "../utils/payload-types";
+import { HeaderFooterData } from "../utils/payload-types";
 import { SocialLink } from "../utils/types";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
@@ -8,14 +8,14 @@ type Props = {
   title?: string;
   subtitle?: string;
   className?: string;
-  footer: FooterData;
+  headerFooter: HeaderFooterData;
   children?: JSX.Element | JSX.Element[];
 }
 
-function PageWrapper({ title, subtitle, className, footer, children }: Props) {
+function PageWrapper({ title, subtitle, className, headerFooter, children }: Props) {
   return (
     <>
-      <AppHeader />
+      <AppHeader navLinks={headerFooter.navigationLinks ?? []}/>
       <main className={className}>
         <Container maxWidth="lg" sx={{ mb: '1rem' }}>
           {title && <Typography variant='h1' gutterBottom={!subtitle} sx={{ mt: '1rem' }}>{title}</Typography>}
@@ -23,7 +23,7 @@ function PageWrapper({ title, subtitle, className, footer, children }: Props) {
           {children}
         </Container>
       </main>
-      <AppFooter icons={footer.socialLinks as SocialLink[]} text={footer.copyrightText}/>
+      <AppFooter icons={headerFooter.socialLinks as SocialLink[]} text={headerFooter.copyrightText}/>
     </>
   );
 }
