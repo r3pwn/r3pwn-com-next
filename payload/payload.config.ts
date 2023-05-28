@@ -6,7 +6,7 @@ import { buildConfig } from 'payload/config';
 
 import Media from './collections/Media';
 import Page from './collections/Page';
-import HeaderFooter from './globals/HeaderFooter';
+import Navigation from './globals/Navigation';
 
 const googleCloudStorageAdapter = gcsAdapter({
   options: {
@@ -36,7 +36,7 @@ export default buildConfig({
     Media
   ],
   globals: [
-    HeaderFooter
+    Navigation
   ],
   typescript: {
     outputFile: path.resolve(__dirname, '../utils/payload-types.ts'),

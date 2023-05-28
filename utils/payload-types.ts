@@ -12,7 +12,7 @@ export interface Config {
     users: User;
   };
   globals: {
-    'header-footer': HeaderFooterData;
+    navigation: NavigationData;
   };
 }
 export interface PageData {
@@ -97,19 +97,23 @@ export interface User {
   lockUntil?: string;
   password?: string;
 }
-export interface HeaderFooterData {
+export interface NavigationData {
   id: string;
-  navigationLinks: {
-    label: string;
-    target: string | PageData;
-    id?: string;
-  }[];
-  socialLinks?: {
-    ariaLabel?: string;
-    url?: string;
-    icon?: 'email' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'reddit' | 'telegram' | 'twitter';
-    openInNewTab?: boolean;
-    id?: string;
-  }[];
-  copyrightText?: string;
+  header: {
+    navigationLinks: {
+      label: string;
+      target: string | PageData;
+      id?: string;
+    }[];
+  };
+  footer?: {
+    socialLinks?: {
+      ariaLabel?: string;
+      url?: string;
+      icon?: 'email' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'reddit' | 'telegram' | 'twitter';
+      openInNewTab?: boolean;
+      id?: string;
+    }[];
+    copyrightText?: string;
+  };
 }

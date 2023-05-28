@@ -6,7 +6,7 @@ import { OpenGraphTags } from "../utils/types";
 import PageWrapper from '../components/PageWrapper';
 import getPayloadClient from '../payload/payloadClient';
 import { renderPageBlocks } from '../utils/payload-page';
-import { HeaderFooterData, PageData, PayloadMedia } from '../utils/payload-types';
+import { NavigationData, PageData, PayloadMedia } from '../utils/payload-types';
 import { PayloadBlock, TileSheetBlock } from '../utils/payload-types-block';
 
 type RouteParams = {
@@ -15,10 +15,10 @@ type RouteParams = {
 type Props = {
   data: PageData,
   metadata: OpenGraphTags;
-  headerFooter: HeaderFooterData;
+  navigation: NavigationData;
 }
 
-export default function DynamicPage({ data, metadata, headerFooter }: Props) {
+export default function DynamicPage({ data, metadata, navigation }: Props) {
   return (
     <>
       <Head>
@@ -27,7 +27,7 @@ export default function DynamicPage({ data, metadata, headerFooter }: Props) {
       <PageWrapper
         title={data.showTitle ? data.title : undefined}
         subtitle={data.subtitle}
-        headerFooter={headerFooter}>
+        navigation={navigation}>
         {renderPageBlocks(data.content as PayloadBlock[]) as JSX.Element[]}
       </PageWrapper>
     </>
@@ -68,15 +68,13 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
     }
   }
 
-  const headerFooter = await payload.findGlobal({
-    slug: 'header-footer'
-  });
+  const navigation = await payload.findGlobal({ slug: 'navigation' });
 
   return {
     props: {
       data: currentPage,
       metadata: getPageMetadata(currentPage),
-      headerFooter
+      navigation
     },
     revalidate: SECONDS_PER_DAY * 30
   }
