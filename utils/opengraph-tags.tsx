@@ -9,6 +9,12 @@ export const getPageMetadata = (page: PageData) : OpenGraphTags => {
     url: process.env.SITE_HOST
   } as OpenGraphTags;
 
+  const latestBreadcrumb = page.breadcrumbs?.at(-1)?.url;
+
+  if (latestBreadcrumb && latestBreadcrumb != '/index') {
+    metadata.url = `${process.env.SITE_HOST}${latestBreadcrumb}`;
+  }
+
   if ((page.featuredImage as PayloadMedia)?.url) {
     metadata.image = (page.featuredImage as PayloadMedia).url;
   }
