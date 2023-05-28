@@ -12,7 +12,7 @@ const googleCloudStorageAdapter = gcsAdapter({
   options: {
     credentials: JSON.parse(process.env.GCS_CREDENTIALS as string || '{}')
   },
-  bucket: process.env.GCS_BUCKET as string,
+  bucket: process.env.GCS_BUCKET as string
 })
 
 export default buildConfig({

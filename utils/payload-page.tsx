@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import Image from 'next/image';
 import PostTile from '../components/PostTile';
 import { serializeRichText } from './payload-richtext';
 import { PayloadBlock } from './payload-types-block';
@@ -26,17 +27,23 @@ export const renderPageBlocks = (content: PayloadBlock[]) => content.map((block)
       return (
         <Box component="div" key={block.id} sx={{ display: { xs: 'flex', md: 'block' }, flexDirection: 'column'}}>
           {block.image && <Box
-            component="img"
+            component="div"
             sx={{
+              overflow: 'hidden',
               borderRadius: '50%',
               maxWidth: '250px',
               float: 'left',
               marginLeft: { xs: 'auto', md: '0' },
               marginRight: { xs: 'auto', md: '3rem' },
               marginBottom: { xs: '0', md: '2rem' }
-            }}
-            alt={block.image.altText}
-            src={block.image.url} />}
+            }}>
+              <Image
+                src={block.image.url ?? ''}
+                width={250}
+                height={250}
+                alt={block.image.altText ?? ''}
+              />
+            </Box>}
           {serializeRichText(block.content as RichTextNode[])}
         </Box>);
     default:

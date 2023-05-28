@@ -14,7 +14,7 @@ const Media: CollectionConfig = {
   ],
   upload: {
     disableLocalStorage: true,
-    staticURL: `${process.env.GCS_BASEURL}${process.env.GCS_BUCKET}`,
+    staticURL: `https://${process.env.GCS_HOSTNAME}/${process.env.GCS_BUCKET}`,
     staticDir: 'media',
     mimeTypes: ['image/*']
   }

@@ -34,6 +34,16 @@ const nextConfig = {
       }
     ]
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: process.env.GCS_HOSTNAME,
+        port: '',
+        pathname: `/${process.env.GCS_BUCKET}/**`,
+      },
+    ],
+  },
 };
 
 const payloadConfig = {
