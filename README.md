@@ -1,30 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project that integrates [PayloadCMS](https://payloadcms.com/).
+
+## Environment Setup
+
+This site utilizes MongoDB and Google Cloud Storage, and will need you to provide your own environment variables.
+
+You can make a copy of the `.env-example` file, name it `.env`, and populate the following variables:
+
+- `MONGODB_URI`
+- `PAYLOAD_SECRET`
+- `CACHE_BUSTER_SECRET`
+- `GCS_CREDENTIALS`
+- `GCS_BUCKET`
 
 ## Getting Started
 
-First, run the development server:
+Once you have the environment set up, you can run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
+Opening [http://localhost:3000/admin](http://localhost:3000/admin) will open the PayloadCMS Admin site, where you can add content to the site.
 
-To learn more about Next.js, take a look at the following resources:
+**Note**: Without any content, you may just see a blank page. This is expected. Creating a page with a slug of `index` will cause that page to become the homepage.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Libraries
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To learn more about the libraries used in this project, you can take a look at the following resources:
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
+- [PayloadCMS Documentation](https://payloadcms.com/docs/getting-started/what-is-payload) - learn more about PayloadCMS
+- [next-payload](https://github.com/payloadcms/next-payload) - add PayloadCMS to an existing Next.js project (serverlessly)
