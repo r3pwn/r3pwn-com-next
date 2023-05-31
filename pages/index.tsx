@@ -1,11 +1,12 @@
 import Head from 'next/head';
 import { SECONDS_PER_DAY } from '../utils/constants';
-import { generateMetadataTags, getPageMetadata } from '../utils/opengraph-tags';
+import { getPageMetadata } from '../utils/opengraph-tags';
 import { OpenGraphTags } from "../utils/types";
 
+import AppMetadata from '../components/AppMetadata';
+import ContentBlock from '../components/ContentBlock';
 import PageWrapper from '../components/PageWrapper';
 import getPayloadClient from '../payload/payloadClient';
-import { renderPageBlocks } from '../utils/payload-page';
 import { NavigationData, PageData } from '../utils/payload-types';
 import { PayloadBlock } from '../utils/payload-types-block';
 
@@ -19,10 +20,12 @@ export default function Home({ data, metadata, navigation }: Props) {
   return (
     <>
       <Head>
-        {generateMetadataTags(metadata)}
+        <AppMetadata metadata={metadata} />
       </Head>
       <PageWrapper navigation={navigation}>
-        {renderPageBlocks(data.content as PayloadBlock[]) as JSX.Element[]}
+        {(data.content as PayloadBlock[]).map((block, index) => 
+          (<ContentBlock key={index} block={block} />))
+        }
       </PageWrapper>
     </>
   )

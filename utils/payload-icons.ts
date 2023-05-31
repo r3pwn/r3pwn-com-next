@@ -10,6 +10,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import { SvgIconTypeMap } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
 
+// Icons added to this object will automatically appear in Payload, and will automatically support being displayed on the site
 const iconList = {
   email: EmailIcon,
   facebook: FacebookIcon,

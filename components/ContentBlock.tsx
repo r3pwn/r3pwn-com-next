@@ -1,14 +1,20 @@
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 import Image from 'next/image';
-import PostTile from '../components/PostTile';
-import { serializeRichText } from './payload-richtext';
-import { PayloadBlock } from './payload-types-block';
-import { RichTextNode } from './types';
+import { PayloadBlock } from "../utils/payload-types-block";
+import ContentRichText from "./ContentRichText";
+import PostTile from "./PostTile";
 
-export const renderPageBlocks = (content: PayloadBlock[]) => content.map((block) => {
+type Props = {
+  block: PayloadBlock;
+}
+
+function ContentBlock({ block }: Props) {
   switch (block.blockType) {
     case 'rich-text':
-      return (<div key={block.id} className='rich-text-block'>{serializeRichText(block.content)}</div>);
+      return (
+        <div key={block.id} className='rich-text-block'>
+         <ContentRichText content={block.content} />
+        </div>);
     case 'tile-sheet':
       return (
         <Box key={block.id} sx={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', mt: '1.5rem' }}>
@@ -44,10 +50,11 @@ export const renderPageBlocks = (content: PayloadBlock[]) => content.map((block)
                 alt={block.image.altText ?? ''}
               />
             </Box>}
-          {serializeRichText(block.content as RichTextNode[])}
+            <ContentRichText content={block.content} />
         </Box>);
     default:
-      console.error(`blockType ${block.blockType} not currently supported`);
+      console.error(`[ContentBlock] blockType ${block.blockType} not currently supported`);
       return (<div></div>);
   }
-});
+}
+export default ContentBlock;
