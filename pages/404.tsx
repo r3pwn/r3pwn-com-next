@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
 import { Link, Typography } from '@mui/material';
-import AppMetadata from '../components/AppMetadata';
 import PageWrapper from '../components/PageWrapper';
 import { getPayloadClient } from '../payload/payloadClient';
 import { SECONDS_PER_DAY } from '../utils/constants';
+import { renderMetadata } from '../utils/metadata';
 import { NavigationData } from '../utils/payload-types';
 import { OpenGraphTags } from '../utils/types';
 
@@ -17,7 +17,7 @@ export default function NotFound({ metadata, navigation }: Props) {
   return (
     <>
       <Head>
-        <AppMetadata metadata={metadata} />
+        {renderMetadata(metadata)}
         <meta name="robots" content="noindex" />
       </Head>
       <PageWrapper title='Content not found' navigation={navigation}>

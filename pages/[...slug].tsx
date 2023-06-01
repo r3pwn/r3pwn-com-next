@@ -1,9 +1,8 @@
 import Head from 'next/head';
 import { SECONDS_PER_DAY } from '../utils/constants';
-import { getPageMetadata } from '../utils/opengraph-tags';
+import { getPageMetadata, renderMetadata } from '../utils/metadata';
 import { OpenGraphTags } from "../utils/types";
 
-import AppMetadata from '../components/AppMetadata';
 import ContentBlock from '../components/ContentBlock';
 import PageWrapper from '../components/PageWrapper';
 import getPayloadClient from '../payload/payloadClient';
@@ -23,7 +22,7 @@ export default function DynamicPage({ data, metadata, navigation }: Props) {
   return (
     <>
       <Head>
-        <AppMetadata metadata={metadata} />
+        {renderMetadata(metadata)}
       </Head>
       <PageWrapper
         title={data.showTitle ? data.title : undefined}
