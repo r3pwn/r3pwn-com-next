@@ -116,4 +116,6 @@ export interface NavigationData {
     }[];
     copyrightText?: string;
   };
+  updatedAt?: string;
+  createdAt?: string;
 }
