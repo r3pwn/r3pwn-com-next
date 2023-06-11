@@ -34,9 +34,14 @@ export async function getStaticProps() {
   const payload = await getPayloadClient();
 
   const page = await payload.find({
-    collection: 'page'
+    collection: 'page',
+    where: {
+      slug: {
+        equals: 'index'
+      }
+    }
   }).then(response => {
-    return (response.docs as PageData[]).find(doc => doc.slug === 'index');
+    return (response?.docs as PageData[] | undefined)?.at(0);
   });
 
   if (!page) {
