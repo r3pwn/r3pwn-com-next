@@ -2,6 +2,7 @@ import { Block } from "payload/types";
 
 const Biography: Block = {
   slug: 'biography',
+  interfaceName: 'BiographyBlock',
   fields: [
     {
       name: 'image',

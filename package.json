@@ -11,7 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.0",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/inter": "^4.5.15",
     "@google-cloud/storage": "^6.11.0",
@@ -24,7 +24,7 @@
     "eslint-config-next": "13.4.4",
     "jstoxml": "^3.2.7",
     "next": "13.4.4",
-    "payload": "^1.8.5",
+    "payload": "^1.9.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

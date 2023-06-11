@@ -2,6 +2,7 @@ import { Block } from "payload/types";
 
 const LinkTile: Block = {
   slug: 'link-tile',
+  interfaceName: 'LinkTileBlock',
   fields: [
     {
       name: 'title',

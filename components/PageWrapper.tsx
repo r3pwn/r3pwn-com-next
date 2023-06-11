@@ -15,7 +15,7 @@ type Props = {
 function PageWrapper({ title, subtitle, className, navigation, children }: Props) {
   return (
     <>
-      <AppHeader navLinks={navigation.header.navigationLinks ?? []}/>
+      <AppHeader navLinks={navigation.header?.navigationLinks ?? []}/>
       <main className={className}>
         <Container maxWidth="lg" sx={{ mb: '1rem' }}>
           {title && <Typography variant='h1' gutterBottom={!subtitle} sx={{ mt: '1rem' }}>{title}</Typography>}

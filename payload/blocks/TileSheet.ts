@@ -3,6 +3,7 @@ import LinkTile from "./LinkTile";
 
 const TileSheet: Block = {
   slug: 'tile-sheet',
+  interfaceName: 'TileSheetBlock',
   fields: [
     {
       name: 'title',

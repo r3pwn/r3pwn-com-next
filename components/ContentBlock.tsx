@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
 import Image from 'next/image';
+import { PageData, PayloadMedia } from "../utils/payload-types";
 import { PayloadBlock } from "../utils/payload-types-block";
+import { RichTextNode } from "../utils/types";
 import ContentRichText from "./ContentRichText";
 import PostTile from "./PostTile";
 
@@ -23,8 +25,8 @@ function ContentBlock({ block }: Props) {
               key={tile.id || index}
               title={tile.title}
               description={tile.description}
-              url={tile.link.breadcrumbs?.at(-1)?.url ?? '/'}
-              image={tile.image}
+              url={(tile.link as PageData).breadcrumbs?.at(-1)?.url ?? '/'}
+              image={tile.image as PayloadMedia}
               sx={{ ml: { xs: 'auto', md: '0'}, mr: { xs: 'auto', md: '0'} }}
             />
           ))}
@@ -44,13 +46,13 @@ function ContentBlock({ block }: Props) {
               marginBottom: { xs: '0', md: '2rem' }
             }}>
               <Image
-                src={block.image.url ?? ''}
+                src={(block.image as PayloadMedia).url ?? ''}
                 width={250}
                 height={250}
-                alt={block.image.altText ?? ''}
+                alt={(block.image as PayloadMedia).altText ?? ''}
               />
             </Box>}
-            <ContentRichText content={block.content} />
+            <ContentRichText content={block.content as RichTextNode[]} />
         </Box>);
     default:
       console.error(`[ContentBlock] blockType ${block.blockType} not currently supported`);

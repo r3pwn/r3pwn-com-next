@@ -6,8 +6,8 @@ import { OpenGraphTags } from "../utils/types";
 import ContentBlock from '../components/ContentBlock';
 import PageWrapper from '../components/PageWrapper';
 import getPayloadClient from '../payload/payloadClient';
-import { NavigationData, PageData, PayloadMedia } from '../utils/payload-types';
-import { PayloadBlock, TileSheetBlock } from '../utils/payload-types-block';
+import { NavigationData, PageData, PayloadMedia, TileSheetBlock } from '../utils/payload-types';
+import { PayloadBlock } from '../utils/payload-types-block';
 
 type RouteParams = {
   slug: string[];

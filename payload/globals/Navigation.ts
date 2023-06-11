@@ -10,6 +10,7 @@ const Navigation: GlobalConfig = {
     {
       name: 'header',
       type: 'group',
+      interfaceName: 'HeaderData',
       fields: [
         {
           name: 'navigationLinks',
@@ -38,6 +39,7 @@ const Navigation: GlobalConfig = {
     {
       name: 'footer',
       type: 'group',
+      interfaceName: 'FooterData',
       fields: [
         {
           name: 'socialLinks',

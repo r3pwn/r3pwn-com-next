@@ -2,6 +2,7 @@ import { Block } from "payload/types";
 
 const ParentTileSheet: Block = {
   slug: 'parent-tile-sheet',
+  interfaceName: 'ParentTileSheetBlock',
   fields: [
     {
       name: 'title',
