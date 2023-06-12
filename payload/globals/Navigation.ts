@@ -1,8 +1,8 @@
-import { GlobalConfig } from "payload/types";
-import { getSupportedIcons } from "../../utils/payload-icons";
+import { GlobalConfig } from 'payload/types';
+import { getSupportedIcons } from '../../utils/payload-icons';
 
 const Navigation: GlobalConfig = {
-  slug: "navigation",
+  slug: 'navigation',
   typescript: {
     interface: 'NavigationData'
   },
@@ -75,8 +75,8 @@ const Navigation: GlobalConfig = {
           ]
         },
         {
-          name: "copyrightText",
-          type: "text"
+          name: 'copyrightText',
+          type: 'text'
         }
       ]
     }

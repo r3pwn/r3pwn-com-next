@@ -1,4 +1,4 @@
-import { Payload, getPayload } from "payload/dist/payload";
+import { Payload, getPayload } from 'payload/dist/payload';
 import config from './payload.config';
 
 if (!process.env.MONGODB_URI) {

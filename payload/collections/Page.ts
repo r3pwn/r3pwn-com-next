@@ -9,7 +9,7 @@ import { bustCache } from '../utils/cache-buster';
 const Page: CollectionConfig = {
   slug: 'page',
   typescript: {
-    interface: "PageData"
+    interface: 'PageData'
   },
   admin: {
     useAsTitle: 'title',
@@ -54,8 +54,8 @@ const Page: CollectionConfig = {
       ]
     },
     {
-      name: "slug",
-      type: "text",
+      name: 'slug',
+      type: 'text',
       required: true,
       admin: {
         position: 'sidebar'

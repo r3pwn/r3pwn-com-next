@@ -1,9 +1,9 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Link, Typography } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import escapeHTML from 'escape-html';
-import { Fragment } from "react";
+import { Fragment } from 'react';
 import { Text } from 'slate';
-import { RichTextNode } from "../utils/types";
+import { RichTextNode } from '../utils/types';
 
 type Props = {
   content: RichTextNode[];

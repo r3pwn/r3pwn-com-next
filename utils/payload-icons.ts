@@ -26,7 +26,7 @@ export const getSupportedIcons = function () {
   return Object.keys(iconList);
 }
 
-export const getIcon = function (iconName: string): OverridableComponent<SvgIconTypeMap<{}, "svg">> {
+export const getIcon = function (iconName: string): OverridableComponent<SvgIconTypeMap<{}, 'svg'>> {
   if (!iconList[iconName]) {
     // if the icon requested is not supported, use the broken image icon instead
     return BrokenImageIcon;

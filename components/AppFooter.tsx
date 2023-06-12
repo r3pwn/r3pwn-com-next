@@ -1,6 +1,6 @@
-import { AppBar, Box, Container, IconButton, SvgIcon, Typography } from "@mui/material";
-import { getIcon } from "../utils/payload-icons";
-import { SocialLink } from "../utils/types";
+import { AppBar, Box, Container, IconButton, SvgIcon, Typography } from '@mui/material';
+import { getIcon } from '../utils/payload-icons';
+import { SocialLink } from '../utils/types';
 
 type Props = {
   icons: SocialLink[];

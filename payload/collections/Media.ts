@@ -7,8 +7,8 @@ const Media: CollectionConfig = {
   },
   fields: [
     {
-      name: "altText",
-      type: "text",
+      name: 'altText',
+      type: 'text',
       required: false
     }
   ],

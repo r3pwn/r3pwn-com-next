@@ -1,8 +1,8 @@
-import { Container, Typography } from "@mui/material";
-import { NavigationData } from "../utils/payload-types";
-import { SocialLink } from "../utils/types";
-import AppFooter from "./AppFooter";
-import AppHeader from "./AppHeader";
+import { Container, Typography } from '@mui/material';
+import { NavigationData } from '../utils/payload-types';
+import { SocialLink } from '../utils/types';
+import AppFooter from './AppFooter';
+import AppHeader from './AppHeader';
 
 type Props = {
   title?: string;

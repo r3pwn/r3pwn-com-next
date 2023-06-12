@@ -1,4 +1,4 @@
-import { Block } from "payload/types";
+import { Block } from 'payload/types';
 
 const LinkTile: Block = {
   slug: 'link-tile',

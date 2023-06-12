@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { SECONDS_PER_DAY } from '../utils/constants';
 import { getPageMetadata, renderMetadata } from '../utils/metadata';
-import { OpenGraphTags } from "../utils/types";
+import { OpenGraphTags } from '../utils/types';
 
 import ContentBlock from '../components/ContentBlock';
 import PageWrapper from '../components/PageWrapper';

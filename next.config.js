@@ -5,6 +5,9 @@ const { withPayload } = require('@payloadcms/next-payload');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  eslint: {
+    dirs: ['app', 'components', 'pages', 'payload', 'utils']
+  },
   async redirects () {
     // /blog and /hackathons redirects exist to not break current links to the site
     return [
@@ -41,9 +44,9 @@ const nextConfig = {
         hostname: process.env.GCS_HOSTNAME,
         port: '',
         pathname: `/${process.env.GCS_BUCKET}/**`,
-      },
-    ],
-  },
+      }
+    ]
+  }
 };
 
 const payloadConfig = {

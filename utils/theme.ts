@@ -12,7 +12,7 @@ export const getCurrentTheme = () => {
       mode: 'dark'
     },
     typography: {
-      fontFamily: "Inter,sans-serif",
+      fontFamily: 'Inter,sans-serif',
       h1: {
         fontSize: '3rem',
         fontWeight: 500,

@@ -1,5 +1,5 @@
 import { toXML } from 'jstoxml';
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from 'next';
 import getPayloadClient from '../../../payload/payloadClient';
 import { PageData } from '../../../utils/payload-types';
 

@@ -1,4 +1,4 @@
-import { PayloadMedia } from "./payload-types";
+import { PayloadMedia } from './payload-types';
 
 export type OpenGraphTags = {
   title: string;

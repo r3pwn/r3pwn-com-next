@@ -1,6 +1,6 @@
 import { cloudStorage } from '@payloadcms/plugin-cloud-storage';
 import { gcsAdapter } from '@payloadcms/plugin-cloud-storage/gcs';
-import nestedDocs from "@payloadcms/plugin-nested-docs";
+import nestedDocs from '@payloadcms/plugin-nested-docs';
 import path from 'path';
 import { buildConfig } from 'payload/config';
 
@@ -18,10 +18,10 @@ const googleCloudStorageAdapter = gcsAdapter({
 export default buildConfig({
   plugins: [
     nestedDocs({
-      collections: ["page"],
+      collections: ['page'],
       generateLabel: (_, doc) => doc.title as string,
       generateURL: (docs) =>
-        docs.reduce((url, doc) => `${url}/${doc.slug as string}`, ""),
+        docs.reduce((url, doc) => `${url}/${doc.slug as string}`, ''),
     }),
     cloudStorage({
       collections: {

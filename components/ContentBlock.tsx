@@ -1,10 +1,10 @@
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
 import Image from 'next/image';
-import { PageData, PayloadMedia } from "../utils/payload-types";
-import { PayloadBlock } from "../utils/payload-types-block";
-import { RichTextNode } from "../utils/types";
-import ContentRichText from "./ContentRichText";
-import PostTile from "./PostTile";
+import { PageData, PayloadMedia } from '../utils/payload-types';
+import { PayloadBlock } from '../utils/payload-types-block';
+import { RichTextNode } from '../utils/types';
+import ContentRichText from './ContentRichText';
+import PostTile from './PostTile';
 
 type Props = {
   block: PayloadBlock;

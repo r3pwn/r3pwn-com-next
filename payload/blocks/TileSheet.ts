@@ -1,5 +1,5 @@
-import { Block } from "payload/types";
-import LinkTile from "./LinkTile";
+import { Block } from 'payload/types';
+import LinkTile from './LinkTile';
 
 const TileSheet: Block = {
   slug: 'tile-sheet',

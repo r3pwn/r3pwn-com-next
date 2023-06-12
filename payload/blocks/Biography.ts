@@ -1,4 +1,4 @@
-import { Block } from "payload/types";
+import { Block } from 'payload/types';
 
 const Biography: Block = {
   slug: 'biography',
