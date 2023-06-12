@@ -8,7 +8,6 @@ You can make a copy of the `.env-example` file, name it `.env`, and populate the
 
 - `MONGODB_URI`
 - `PAYLOAD_SECRET`
-- `CACHE_BUSTER_SECRET`
 - `GCS_CREDENTIALS`
 - `GCS_BUCKET`
 
