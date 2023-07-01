@@ -754,10 +754,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@payloadcms/next-payload@^0.0.23":
-  version "0.0.23"
-  resolved "https://registry.npmjs.org/@payloadcms/next-payload/-/next-payload-0.0.23.tgz"
-  integrity sha512-qtFnofrviKC9oZRiXf9a1uIWrTY8lkTzKkZsPaBiS8I2DfrG9GxtyTH+pmlE/+m9SkWbqbrcC5KRf5UMgGKRaw==
+"@payloadcms/next-payload@^0.0.31":
+  version "0.0.31"
+  resolved "https://registry.yarnpkg.com/@payloadcms/next-payload/-/next-payload-0.0.31.tgz#bfe50107b30ece3e4594cc256b3b2e41c7509a68"
+  integrity sha512-SP84panIRAnfXrfgj1B4gNrLMJIMr5ay1oA+zSAGv3fNakyfI2/IukfAXjLmdOmRoA5ObwIF+FDZNMC74u26gA==
   dependencies:
     "@swc/core" "^1.3.35"
     "@swc/register" "^0.1.10"
@@ -5230,10 +5230,10 @@ pause@0.0.1:
   resolved "https://registry.yarnpkg.com/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
   integrity sha512-KG8UEiEVkR3wGEb4m5yZkVCzigAD+cVEJck2CzYZO37ZGJfctvVptVO192MwrtPhzONn6go8ylnOdMhKqi4nfg==
 
-payload@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/payload/-/payload-1.9.1.tgz#3c3e8ec84c22a611e20d5b917aff55d9c726e4cb"
-  integrity sha512-U+renrzwFvb6I/njRZTby2DWiHBXLFPg85uex8JMyKBpYiPaUxy0GaWGqO54LsDfvbKh2f61rVbUcdxa9gxsRQ==
+payload@^1.10.4:
+  version "1.10.4"
+  resolved "https://registry.yarnpkg.com/payload/-/payload-1.10.4.tgz#2fc2be611cd1f2b36f7890b9934e84690089be84"
+  integrity sha512-H6cGhQr6gzqZoz1G+f4Nya0WWDKooBOECVMGsUpgxBDbN1hZ5G2yET0G5fVhVuiCZiPAXAWFx8s80Hn/OzUH3Q==
   dependencies:
     "@date-io/date-fns" "^2.16.0"
     "@dnd-kit/core" "^6.0.7"
