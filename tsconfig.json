@@ -24,7 +24,7 @@
     ],
     "strictNullChecks": true,
     "paths": {
-      "@/*": [ "/*" ]
+      "@/*": [ "./*" ]
     }
   },
   "include": [
