@@ -20,6 +20,7 @@
     "@payloadcms/next-payload": "^0.0.31",
     "@payloadcms/plugin-cloud-storage": "^1.0.19",
     "@payloadcms/plugin-nested-docs": "^1.0.5",
+    "disqus-react": "^1.1.5",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "jstoxml": "^3.2.7",

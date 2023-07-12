@@ -1,6 +1,7 @@
 import { CollectionConfig } from 'payload/types';
 import { PageData } from '../../utils/payload-types';
 import Biography from '../blocks/Biography';
+import DisqusComments from '../blocks/DisqusComments';
 import ParentTileSheet from '../blocks/ParentTileSheet';
 import RichText from '../blocks/RichText';
 import TileSheet from '../blocks/TileSheet';
@@ -50,7 +51,8 @@ const Page: CollectionConfig = {
         Biography,
         RichText,
         TileSheet,
-        ParentTileSheet
+        ParentTileSheet,
+        DisqusComments
       ]
     },
     {

@@ -1,4 +1,7 @@
+'use client'
+
 import { Box } from '@mui/material';
+import { DiscussionEmbed } from 'disqus-react';
 import Image from 'next/image';
 import { PageData, PayloadMedia } from '../utils/payload-types';
 import { PayloadBlock } from '../utils/payload-types-block';
@@ -54,6 +57,15 @@ function ContentBlock({ block }: Props) {
             </Box>}
             <ContentRichText content={block.content as RichTextNode[]} />
         </Box>);
+    case 'disqus-comments':
+      return (
+        <DiscussionEmbed
+          shortname='example'
+          config={{
+            url: block.url,
+            identifier: block.identifier
+          }} />
+        );
     default:
       console.error(`[ContentBlock] blockType ${block.blockType} not currently supported`);
       return (<div></div>);
