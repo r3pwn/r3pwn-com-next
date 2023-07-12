@@ -23,7 +23,7 @@ export interface PageData {
   description: string;
   featuredImage?: string | PayloadMedia;
   showTitle?: boolean;
-  content?: (BiographyBlock | RichTextBlock | TileSheetBlock | ParentTileSheetBlock)[];
+  content?: (BiographyBlock | RichTextBlock | TileSheetBlock | ParentTileSheetBlock | DisqusBlock)[];
   slug: string;
   postedDate: string;
   parent?: string | PageData;
@@ -86,6 +86,15 @@ export interface ParentTileSheetBlock {
   id?: string;
   blockName?: string;
   blockType: 'parent-tile-sheet';
+}
+export interface DisqusBlock {
+  title: string;
+  disqusDomain: string;
+  url: string;
+  identifier: string;
+  id?: string;
+  blockName?: string;
+  blockType: 'disqus-comments';
 }
 export interface User {
   id: string;
