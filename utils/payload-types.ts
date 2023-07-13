@@ -88,7 +88,6 @@ export interface ParentTileSheetBlock {
   blockType: 'parent-tile-sheet';
 }
 export interface DisqusBlock {
-  disqusDomain: string;
   url: string;
   identifier: string;
   id?: string;

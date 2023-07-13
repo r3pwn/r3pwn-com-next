@@ -5,11 +5,6 @@ const DisqusComments: Block = {
   interfaceName: 'DisqusBlock',
   fields: [
     {
-      name: 'disqusDomain',
-      type: 'text',
-      required: true
-    },
-    {
       name: 'url',
       type: 'text',
       required: true
