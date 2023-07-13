@@ -68,3 +68,11 @@ p > code, span > code {
 .rich-text-block h2 {
   margin-top: 0.75rem;
 }
+
+.rich-text-block {
+  margin-bottom: 1rem;
+}
+
+#disqus_thread {
+  color-scheme: auto;
+}
