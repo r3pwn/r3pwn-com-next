@@ -1,5 +1,4 @@
-'use client'
-
+import { SITE_NAME } from '@/utils/constants';
 import { Box } from '@mui/material';
 import { DiscussionEmbed } from 'disqus-react';
 import Image from 'next/image';
@@ -60,7 +59,7 @@ function ContentBlock({ block }: Props) {
     case 'disqus-comments':
       return (
         <DiscussionEmbed
-          shortname='example'
+          shortname={SITE_NAME}
           config={{
             url: block.url,
             identifier: block.identifier

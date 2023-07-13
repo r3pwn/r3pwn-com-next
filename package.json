@@ -15,23 +15,26 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/inter": "^4.5.15",
     "@google-cloud/storage": "^6.11.0",
-    "@mui/icons-material": "^5.13.7",
-    "@mui/material": "^5.13.7",
+    "@mui/icons-material": "^5.14.0",
+    "@mui/material": "^5.14.0",
     "@payloadcms/next-payload": "^0.0.31",
     "@payloadcms/plugin-cloud-storage": "^1.0.19",
-    "@payloadcms/plugin-nested-docs": "^1.0.5",
+    "@payloadcms/plugin-nested-docs": "^1.0.6",
     "disqus-react": "^1.1.5",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "jstoxml": "^3.2.7",
     "next": "13.4.4",
-    "payload": "^1.11.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "payload": "^1.11.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/jstoxml": "^2.0.2",
-    "@types/react": "18.2.7",
+    "@types/react": "^18.2.14",
     "typescript": "5.0.4"
+  },
+  "resolutions": {
+    "@types/react": "18.2.14"
   }
 }
