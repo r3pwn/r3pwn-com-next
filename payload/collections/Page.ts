@@ -105,6 +105,10 @@ const Page: CollectionConfig = {
         await bustCache(Array.from(paths));
       }
     ]
+  },
+  versions: {
+    maxPerDoc: 15,
+    drafts: true
   }
 };
 

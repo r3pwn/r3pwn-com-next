@@ -36,7 +36,7 @@ export default function DynamicPage({ data, metadata, navigation }: Props) {
   )
 }
 
-export async function getStaticProps({ params }: { params: RouteParams }) {
+export async function getStaticProps({ params, draftMode }: { params: RouteParams, draftMode: Boolean }) {
   const payload = await getPayloadClient();
 
   const currentUrl = `/${params.slug.join('/')}`;
@@ -46,7 +46,15 @@ export async function getStaticProps({ params }: { params: RouteParams }) {
     where: {
       slug: {
         equals: params.slug.at(-1)
-      }
+      },
+      // if draft mode not enabled, ensure we're using a status of 'published'
+      ...(!draftMode ?
+        {
+          _status: {
+            equals: 'published'
+          }
+        } : {}
+      )
     }
   }).then(result => (result?.docs as PageData[] | undefined));
   

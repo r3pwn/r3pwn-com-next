@@ -35,6 +35,7 @@ export interface PageData {
   }[];
   updatedAt: string;
   createdAt: string;
+  _status?: 'draft' | 'published';
 }
 export interface PayloadMedia {
   id: string;

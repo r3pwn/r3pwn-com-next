@@ -30,7 +30,7 @@ export default function Home({ data, metadata, navigation }: Props) {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ draftMode }: { draftMode: Boolean }) {
   const payload = await getPayloadClient();
 
   const page = await payload.find({
@@ -38,7 +38,15 @@ export async function getStaticProps() {
     where: {
       slug: {
         equals: 'index'
-      }
+      },
+      // if draft mode not enabled, ensure we're using a status of 'published'
+      ...(!draftMode ?
+        {
+          _status: {
+            equals: 'published'
+          }
+        } : {}
+      )
     }
   }).then(response => {
     return (response?.docs as PageData[] | undefined)?.at(0);
