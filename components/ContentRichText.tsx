@@ -19,7 +19,9 @@ function ContentRichText({ content }: Props) {
       {content.map((node, i) => {
         if (Text.isText(node)) {
           let classNames = `${node.strikethrough ? 'richtext-strikethrough' : ''}`;
-          let text = (<span key={i} className={classNames} dangerouslySetInnerHTML={{__html: replaceEscapes(node.text)}} />);
+          let text = !!classNames ? 
+            (<span key={i} className={classNames} dangerouslySetInnerHTML={{__html: replaceEscapes(node.text)}} />) :
+            node.text;
 
           if (node.bold) {
             text = (
