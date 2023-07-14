@@ -11,7 +11,14 @@ const xmlOptions = {
 async function getAllPages () {
   const payload = await getPayloadClient();
 
-  const pages = (await payload.find({ collection: 'page' })).docs as PageData[];
+  const pages = (await payload.find({
+    collection: 'page',
+    where: {
+      _status: {
+        equals: 'published'
+      }
+    }
+  })).docs as PageData[];
 
   return pages.map(page => (
     {
@@ -27,7 +34,7 @@ async function getAllPages () {
       return 1;
     }
     return 0;
-  });;
+  });
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
