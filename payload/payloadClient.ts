@@ -1,3 +1,4 @@
+import { PageData } from '@/utils/payload-types';
 import { Payload, getPayload } from 'payload/dist/payload';
 import config from './payload.config';
 
@@ -48,5 +49,26 @@ export const getPayloadClient = async (): Promise<Payload> => {
 
   return cached.client
 };
+
+export const getPagesBySlug = async (slug: string, draftMode: Boolean) => {
+  const payload = await getPayloadClient();
+
+  return await payload.find({
+    collection: 'page',
+    where: {
+      slug: {
+        equals: slug
+      },
+      // if draft mode not enabled, ensure we're using a status of 'published'
+      ...(!draftMode ?
+        {
+          _status: {
+            equals: 'published'
+          }
+        } : {}
+      )
+    }
+  }).then(result => (result?.docs as PageData[] | undefined));
+}
 
 export default getPayloadClient;

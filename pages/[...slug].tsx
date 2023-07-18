@@ -5,7 +5,7 @@ import { OpenGraphTags } from '../utils/types';
 
 import ContentBlock from '../components/ContentBlock';
 import PageWrapper from '../components/PageWrapper';
-import getPayloadClient from '../payload/payloadClient';
+import getPayloadClient, { getPagesBySlug } from '../payload/payloadClient';
 import { NavigationData, PageData, PayloadMedia, TileSheetBlock } from '../utils/payload-types';
 import { PayloadBlock } from '../utils/payload-types-block';
 
@@ -39,24 +39,10 @@ export default function DynamicPage({ data, metadata, navigation }: Props) {
 export async function getStaticProps({ params, draftMode }: { params: RouteParams, draftMode: Boolean }) {
   const payload = await getPayloadClient();
 
+  // TODO - pass slug array into getPagesBySlug?
   const currentUrl = `/${params.slug.join('/')}`;
   
-  const pages = await payload.find({
-    collection: 'page',
-    where: {
-      slug: {
-        equals: params.slug.at(-1)
-      },
-      // if draft mode not enabled, ensure we're using a status of 'published'
-      ...(!draftMode ?
-        {
-          _status: {
-            equals: 'published'
-          }
-        } : {}
-      )
-    }
-  }).then(result => (result?.docs as PageData[] | undefined));
+  const pages = await getPagesBySlug(params.slug.at(-1) ?? '', draftMode);
   
   const currentPage = pages?.find(doc => doc.breadcrumbs?.at(-1)?.url === currentUrl);
 

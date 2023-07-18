@@ -5,7 +5,7 @@ import { OpenGraphTags } from '../utils/types';
 
 import ContentBlock from '../components/ContentBlock';
 import PageWrapper from '../components/PageWrapper';
-import getPayloadClient from '../payload/payloadClient';
+import getPayloadClient, { getPagesBySlug } from '../payload/payloadClient';
 import { NavigationData, PageData } from '../utils/payload-types';
 import { PayloadBlock } from '../utils/payload-types-block';
 
@@ -33,24 +33,7 @@ export default function Home({ data, metadata, navigation }: Props) {
 export async function getStaticProps({ draftMode }: { draftMode: Boolean }) {
   const payload = await getPayloadClient();
 
-  const page = await payload.find({
-    collection: 'page',
-    where: {
-      slug: {
-        equals: 'index'
-      },
-      // if draft mode not enabled, ensure we're using a status of 'published'
-      ...(!draftMode ?
-        {
-          _status: {
-            equals: 'published'
-          }
-        } : {}
-      )
-    }
-  }).then(response => {
-    return (response?.docs as PageData[] | undefined)?.at(0);
-  });
+  const page = (await getPagesBySlug('index', draftMode))?.at(0);
 
   if (!page) {
     return {
