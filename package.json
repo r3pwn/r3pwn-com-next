@@ -40,7 +40,6 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.12",
-    "@payloadcms/eslint-config": "^0.0.2",
     "@types/escape-html": "^1.0.2",
     "@types/express": "^4.17.9",
     "@types/node": "18.11.3",

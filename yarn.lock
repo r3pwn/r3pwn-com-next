@@ -1351,11 +1351,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@payloadcms/eslint-config@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@payloadcms/eslint-config/-/eslint-config-0.0.2.tgz#cadb97ccd6476204a38e057b3cf57dc80efb209f"
-  integrity sha512-EcS7qyX4++eBP/MS4QgrFOzzplsVMaPDfEcxWYoH9OLJCUTlGz8UmfMZPWU7DeAuyehJdij+BywSrcprqun9rA==
-
 "@payloadcms/next-payload@^0.0.31":
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/@payloadcms/next-payload/-/next-payload-0.0.31.tgz#bfe50107b30ece3e4594cc256b3b2e41c7509a68"
