@@ -1,10 +1,13 @@
 import { GlobalConfig } from 'payload/types';
-import { getSupportedIcons } from '../../utils/payload-icons';
+import { getSupportedIcons } from '../../src/utils/payload-icons';
 
 const Navigation: GlobalConfig = {
   slug: 'navigation',
   typescript: {
     interface: 'NavigationData'
+  },
+  access: {
+    read: () => true
   },
   fields: [
     {
