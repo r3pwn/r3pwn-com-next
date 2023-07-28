@@ -8,6 +8,6 @@
   },
   "include": [
     "src/server.ts",
-    "src/payload.config.ts",
+    "payload/payload.config.ts",
   ]
 }
