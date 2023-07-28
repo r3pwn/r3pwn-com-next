@@ -3,8 +3,9 @@ import next from 'next'
 import nextBuild from 'next/dist/build'
 import path from 'path'
 
+const SOURCE_ROOT = '../..'
 dotenv.config({
-  path: path.resolve(__dirname, '../.env'),
+  path: path.resolve(__dirname, `${SOURCE_ROOT}/.env`),
 })
 
 import express from 'express'
@@ -27,7 +28,7 @@ const start = async (): Promise<void> => {
     app.listen(PORT, async () => {
       payload.logger.info('Next.js is now building...')
       // @ts-expect-error
-      await nextBuild(path.join(__dirname, '../'))
+      await nextBuild(path.join(__dirname, `${SOURCE_ROOT}/`))
       process.exit()
     })
 
