@@ -14,7 +14,7 @@ export type RichTextNode = {
   strikethrough?: Boolean;
   text: String;
   type: String;
-  url?: String;
+  url?: string;
   children: RichTextNode[];
   value?: PayloadMedia;
 }
