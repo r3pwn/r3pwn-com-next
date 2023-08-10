@@ -65,7 +65,11 @@ p > code, span > code {
   text-decoration: line-through;
 }
 
-.rich-text-block h2 {
+.rich-text-block blockquote {
+  font-family: var(--font-body);
+}
+
+.rich-text-block h2, .rich-text-block h3 {
   margin-top: 0.75rem;
 }
 
