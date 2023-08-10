@@ -67,6 +67,8 @@ p > code, span > code {
 
 .rich-text-block blockquote {
   font-family: var(--font-body);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .rich-text-block h2, .rich-text-block h3 {
