@@ -118,9 +118,11 @@ function ContentRichText({ content }: Props) {
           case 'relationship':
             if (node.relationTo === 'media-stack') {
               const data = node.value as MediaStackData;
-              console.log(data);
               return (
-                <MediaStack images={data.images?.map(imageItem => imageItem.image as PayloadMedia) ?? []} />
+                <MediaStack
+                  key={i}
+                  images={data.images?.map(imageItem => imageItem.image as PayloadMedia) ?? []}
+                />
               )
             }
           default:
