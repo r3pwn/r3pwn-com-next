@@ -10,6 +10,7 @@ export interface Config {
   collections: {
     page: PageData;
     media: PayloadMedia;
+    'media-stack': MediaStackData;
     users: User;
   };
   globals: {
@@ -94,6 +95,16 @@ export interface DisqusBlock {
   id?: string;
   blockName?: string;
   blockType: 'disqus-comments';
+}
+export interface MediaStackData {
+  id: string;
+  title: string;
+  images?: {
+    image?: string | PayloadMedia;
+    id?: string;
+  }[];
+  updatedAt: string;
+  createdAt: string;
 }
 export interface User {
   id: string;

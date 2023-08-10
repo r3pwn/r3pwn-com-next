@@ -4,6 +4,8 @@ import escapeHTML from 'escape-html';
 import { Fragment } from 'react';
 import { Text } from 'slate';
 import { RichTextNode } from '../utils/types';
+import { MediaStackData, PayloadMedia } from '@/utils/payload-types';
+import MediaStack from './MediaStack';
 
 type Props = {
   content: RichTextNode[];
@@ -99,6 +101,7 @@ function ContentRichText({ content }: Props) {
               </Link>
             );
           case 'upload':
+            const image = node.value as PayloadMedia;
             return (
               <Box
                 key={i}
@@ -108,10 +111,18 @@ function ContentRichText({ content }: Props) {
                   width: '80%',
                   marginLeft: '10%'
                 }}
-                alt={node.value?.altText}
-                src={node.value?.url}
+                alt={image?.altText}
+                src={image?.url}
               />
             )
+          case 'relationship':
+            if (node.relationTo === 'media-stack') {
+              const data = node.value as MediaStackData;
+              console.log(data);
+              return (
+                <MediaStack images={data.images?.map(imageItem => imageItem.image as PayloadMedia) ?? []} />
+              )
+            }
           default:
             return (
               <Typography key={i} variant='body1'>

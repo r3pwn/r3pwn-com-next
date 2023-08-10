@@ -7,6 +7,7 @@ import { buildConfig } from 'payload/config';
 import Media from './collections/Media';
 import Page from './collections/Page';
 import Navigation from './globals/Navigation';
+import MediaStack from './collections/MediaStack';
 
 const googleCloudStorageAdapter = gcsAdapter({
   options: {
@@ -33,7 +34,8 @@ export default buildConfig({
   ],
   collections: [
     Page,
-    Media
+    Media,
+    MediaStack
   ],
   globals: [
     Navigation

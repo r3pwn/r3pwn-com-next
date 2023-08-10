@@ -1,4 +1,4 @@
-import { PayloadMedia } from './payload-types';
+import { MediaStackData, PayloadMedia } from './payload-types';
 
 export type OpenGraphTags = {
   title: string;
@@ -16,7 +16,8 @@ export type RichTextNode = {
   type: String;
   url?: String;
   children: RichTextNode[];
-  value?: PayloadMedia;
+  value?: PayloadMedia | MediaStackData;
+  relationTo?: String;
 }
 
 export type SocialLink = {
